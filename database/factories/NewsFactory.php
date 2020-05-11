@@ -7,9 +7,9 @@ use Faker\Generator as Faker;
 
 $factory->define(News::class, function (Faker $faker) {
     return [
-        'title' => $faker->sentence(4),
-        'description' => $faker->sentence(5),
-        'text' => $faker->text(400),
+        'title' => $faker->realText(30),
+        'description' => $faker->realText(30),
+        'text' => $faker->realText(500),
         'date_event' => $faker->dateTimeThisMonth(), // password
     ];
 });

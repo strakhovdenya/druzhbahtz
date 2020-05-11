@@ -14,7 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('app.start');
+    $news = \App\Models\News::orderBy('date_event','desc')->take(5)->get();
+    return view('app.start',['news'=>$news]);
 })->name('start');
 
 Route::get('/about', function () {
