@@ -1,7 +1,7 @@
 @extends('app.layouts.app')
 
 @section('content')
-    <h1 class="container text-center bg-info text-white">Основной контент</h1>
+    <h1 class="container text-center bg-custom_blue text-white">Основной контент</h1>
     <p>текст контента Основной контент</p>
     <p>На відміну від поширеної думки Lorem Ipsum не є
         випадковим набором літер. Він походить з уривку

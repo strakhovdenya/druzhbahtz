@@ -1,7 +1,7 @@
 @extends('app.layouts.app')
 
 @section('content')
-    <h1 class="container text-center bg-info text-white">Основной контент</h1>
+    <h1 class="container text-center bg-custom_blue text-white">КОММАНДА</h1>
     <table class="table">
         <thead>
         <tr>
@@ -21,7 +21,7 @@
                      class="onePlayerImg img-fluid img-thumbnail"
                      src="/image/empty_foto-min.jpg" alt="!">
                 @include('app.blocks.modal',
-                    ['id'=>'1', 'src'=>"/image/empty_foto-min.jpg", 'name'=>'Коцура Руслан'])
+                    ['id'=>'1', 'name'=>'Коцура Руслан', 'src'=>"/image/empty_foto-min.jpg"])
             </td>
             <td><a href="{{route('employees')}}/1">Коцура Руслан</a></td>
             <td>1</td>
@@ -36,7 +36,7 @@
                 <img data-toggle="modal" data-target="#exampleModalCenter2"
                      class="onePlayerImg img-fluid img-thumbnail"
                      src="/image/empty_foto-min.jpg" alt="!">
-                @include('app.blocks.modal',['id'=>'2', 'src'=>"/image/empty_foto-min.jpg", 'name'=>'Москаленко Арсен'])
+                @include('app.blocks.modal',['id'=>'2', 'src'=>"/image/empty_foto-min.jpg", 'name'=>'Москаленко Арсен', 'options'=>'!!!'])
             </td>
             <td><a href="{{route('employees')}}/9">Москаленко Арсен</a></td>
             <td>9</td>

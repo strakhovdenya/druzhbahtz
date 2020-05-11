@@ -1,7 +1,7 @@
 @extends('app.layouts.app')
 
 @section('content')
-    <h1 class="container text-center bg-info text-white">РОЗКЛАД СТАРШI</h1>
+    <h1 class="container text-center bg-custom_blue text-white">РОЗКЛАД СТАРШI</h1>
     <table class="table-bordered container table-hover">
         @include('app.blocks.schedule.tableHead')
         <tbody>

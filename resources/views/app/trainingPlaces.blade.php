@@ -1,7 +1,7 @@
 @extends('app.layouts.app')
 
 @section('content')
-    <h1 class="container text-center bg-info text-white">МІСЦЯ ТРЕНУВАНЬ</h1>
+    <h1 class="container text-center g-custom_blue text-white">МІСЦЯ ТРЕНУВАНЬ</h1>
     <div class="content-maps" align="center">
         <h2 id="base_width">Стадіон ХТЗ (адреса: проспект Московський, 244/1)</h2>
         <iframe id="stadium_htz" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2566.951697324302!2d36.348236615713475!3d49.956008579410216!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x41270bba0e2c3ec1%3A0xafb628825b35ad2a!2z0JzQvtGB0LrQvtCy0YHQutC40Lkg0L_RgNC-0YHQvy4sIDI0NC8xLCDQpdCw0YDRjNC60L7Qsiwg0KXQsNGA0YzQutC-0LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCwgNjEwMDA!5e0!3m2!1sru!2sua!4v1553360700298" frameborder="0" style="border: 0px; width: 734px; height: 450px;" allowfullscreen="">

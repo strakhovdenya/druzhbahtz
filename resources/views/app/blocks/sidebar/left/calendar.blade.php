@@ -1,10 +1,10 @@
 <div class="container">
-    <h3 class="row bg-primary justify-content-center text-white">КАЛЕНДАРЬ</h3>
+    <h3 class="row bg-custom_blue justify-content-center text-white">КАЛЕНДАРЬ</h3>
 
     <div class="row">
         <div class="calendar shadow bg-white p-2">
             <div class="d-flex align-items-center">
-                <i class="fa fa-calendar fa-3x mr-3"></i>
+                <i class="far fa-calendar-alt fa-3x mr-3"></i>
                 <h3 class="month font-weight-bold mb-0 text-uppercase">December 2019</h3>
             </div>
             <p class="font-italic text-muted mb-1">No events for this day.</p>
