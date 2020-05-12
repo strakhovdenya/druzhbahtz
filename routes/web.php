@@ -43,11 +43,21 @@ Route::get('/trainingPlaces', function () {
 })->name('trainingPlaces');
 
 Route::get('/team', function () {
-    return view('app.team');
+    try {
+        $team = \App\Models\Employees::all();
+    }catch (Throwable $e){
+        $team = [];
+    }
+    return view('app.team',['team'=>$team]);
 })->name('team');
 
 Route::get('/employees/{id?}', function ($id = null) {
-    return view('app.employees',['id'=>$id]);
+    if($id !== null){
+        $oneEmployee = \App\Models\Employees::find($id);
+    }else{
+        $oneEmployee = null;
+    }
+    return view('app.employees',['oneEmployee'=>$oneEmployee]);
 })->name('employees');
 
 Route::get('/tournaments/{id?}', function ($id = null) {
