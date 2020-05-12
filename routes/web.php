@@ -14,7 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    $news = \App\Models\News::orderBy('date_event','desc')->take(5)->get();
+    try {
+        $news = \App\Models\News::orderBy('date_event', 'desc')->take(5)->get();
+    }catch (Throwable $e){
+        $news = [];
+    }
     return view('app.start',['news'=>$news]);
 })->name('start');
 
