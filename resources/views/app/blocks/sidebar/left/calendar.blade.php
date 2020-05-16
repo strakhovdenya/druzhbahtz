@@ -1,5 +1,5 @@
 <div class="container">
-    <h3 class="row bg-custom_blue justify-content-center text-white">КАЛЕНДАРЬ</h3>
+    <h3 class="row bg-custom-blue justify-content-center text-white">КАЛЕНДАРЬ</h3>
 
     <div class="row">
         <div class="calendar shadow bg-white p-2">

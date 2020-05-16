@@ -1,7 +1,7 @@
 @extends('app.layouts.app')
 
 @section('content')
-    <h1 class="container text-center bg-custom_blue text-white">КОММАНДА</h1>
+    <h1 class="container text-center bg-custom-blue text-white">КОММАНДА</h1>
     <table class="table">
         <thead>
         <tr>

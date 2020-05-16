@@ -18,7 +18,7 @@ $factory->define(Employees::class, function (Faker $faker) {
 
     'height'=> $faker->randomNumber(2),
     'weight'=> $faker->randomNumber(2),
-    'image'=>  $faker->image('public/storage/images',640,480, null, false),
+    'image'=>  $faker->image('public/storage/images',480,640, null, false),
     'fav_team'=> $faker->text(15),
 
     ];

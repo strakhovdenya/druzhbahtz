@@ -1,6 +1,6 @@
 <div class="row ">
 
-    <nav class="container-fluid position-relative navbar navbar-expand-lg navbar-dark bg-custom_blue mt-5 mb-5">
+    <nav class="container-fluid position-relative navbar navbar-expand-lg navbar-dark bg-custom-blue mt-5 mb-5">
     <img class="position-absolute" src="/image/logo-color.png" alt="main-logo" width="100px">
 
         <!-- Brand -->
