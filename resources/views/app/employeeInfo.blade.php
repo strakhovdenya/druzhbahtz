@@ -18,10 +18,10 @@
                     <tr>
                         <th class="tg-031e" rowspan="10">
                             <a class="gallery" rel="group" title="10.07.2012"
-                               href="/storage/images/{{$oneEmployee->image ?? 'empty_foto-min.jpg'}}">
+                               href="/storage/images/employees/{{$oneEmployee->image ?? 'empty_foto-min.jpg'}}">
                                 <img width="350px" alt="no foto"
                                      class="img-fluid img-thumbnail"
-                                     src="/storage/images/{{$oneEmployee->image?? 'empty_foto-min.jpg'}}"></a>
+                                     src="/storage/images/employees/{{$oneEmployee->image?? 'empty_foto-min.jpg'}}"></a>
                         </th>
                         <th class="border-bottom">Дата рождения: <strong>{{$oneEmployee->born?? '2000-01-01'}}</strong></th>
                     </tr>

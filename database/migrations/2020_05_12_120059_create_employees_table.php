@@ -19,13 +19,13 @@ class CreateEmployeesTable extends Migration
             $table->string('position',100);
             $table->timestamp('born');
             $table->timestamp('start_training');
-            $table->smallInteger('game_number');
+            $table->string('game_number',2);
             $table->string('place_born',100);
             $table->string('place_study',100);
             $table->string('hand',100);
             $table->smallInteger('height');
             $table->smallInteger('weight');
-            $table->string('image',250);
+            $table->string('image',250)->nullable();
             $table->string('fav_team',150);
             $table->text('additional_info');
             $table->softDeletes();

@@ -20,7 +20,7 @@
                                 <div class="col p-1">
                                     <img alt="no foto"
                                          class="img-fluid img-thumbnail"
-                                         src="/storage/images/{{$oneBornToday->image?? 'empty_foto-min.jpg'}}">
+                                         src="/storage/images/employees/{{$oneBornToday->image?? 'empty_foto-min.jpg'}}">
                                 </div>
                             </div>
                             <div class="row">

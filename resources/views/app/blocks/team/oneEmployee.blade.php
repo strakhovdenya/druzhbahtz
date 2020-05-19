@@ -1,6 +1,6 @@
 <div class="card position-relative">
     <a class="text-decoration-none" href="{{route('employees')}}/{{$oneEmployee->id}}">
-        <img class="img-fluid card-img-top" src="/storage/images/{{$oneEmployee->image}}" alt="Card image cap">
+        <img class="img-fluid card-img-top" src="/storage/images/employees/{{$oneEmployee->image}}" alt="Card image cap">
         <div class="card-body p-1">
             <div class="container p-0">
                 <div class="row m-0 position-relative">

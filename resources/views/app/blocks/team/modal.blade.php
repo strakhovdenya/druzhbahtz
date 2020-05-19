@@ -10,7 +10,7 @@
             <div class="modal-body">
                 <img data-toggle="modal" data-target="#exampleModalCenter{{$id}}"
                      class="img-fluid img-thumbnail"
-                     src="/storage/images/{{$src}}">
+                     src="/storage/images/employees/{{$src}}">
             </div>
         </div>
     </div>
