@@ -39,15 +39,7 @@ Route::get('/trainingPlaces', function () {
     return view('app.trainingPlaces');
 })->name('trainingPlaces');
 
-Route::get('/team', function () {
-    try {
-        $team = Employees::all();
-    } catch (Throwable $e) {
-        $team = [];
-    }
-
-    return view('app.team', ['team' => $team]);
-})->name('team');
+Route::get('/team', 'TeamController@index')->name('team');
 
 Route::get('/employees/{id?}', function ($id = null) {
     if ($id !== null) {

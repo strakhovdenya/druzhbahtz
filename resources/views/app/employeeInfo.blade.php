@@ -10,10 +10,10 @@
                aria-controls="nav-profile" aria-selected="false">Oсобисті дані</a>
         </div>
     </nav>
-    <div class="tab-content" id="nav-tabContent">
-        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-            <div class="container container-fluid mt-1 pr-0 pl-0">
-                <table class="table-striped">
+    <div class="tab-content " id="nav-tabContent">
+        <div class="tab-pane fade show active border-danger" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+            <div class="container container-fluid mt-1 pr-0 pl-0 border-danger">
+                <table class="table table-borderless">
                     <tbody>
                     <tr>
                         <th class="tg-031e" rowspan="10">
@@ -23,35 +23,35 @@
                                      class="img-fluid img-thumbnail"
                                      src="/storage/images/{{$oneEmployee->image?? 'empty_foto-min.jpg'}}"></a>
                         </th>
-                        <th class="tg-031e">Дата рождения:<strong>{{$oneEmployee->born?? '2000-01-01'}}</strong></th>
+                        <th class="border-bottom">Дата рождения: <strong>{{$oneEmployee->born?? '2000-01-01'}}</strong></th>
                     </tr>
                     <tr>
-                        <td class="tg-031e">Место рождения:<strong>{{$oneEmployee->place_born??'Харьков'}}</strong></td>
+                        <td class="border-bottom">Место рождения: <strong>{{$oneEmployee->place_born??'Харьков'}}</strong></td>
                     </tr>
                     <tr>
-                        <td class="tg-031e">Место учебы:<strong>{{$oneEmployee->place_study??'Харьков'}}</strong></td>
+                        <td class="border-bottom">Место учебы: <strong>{{$oneEmployee->place_study??'Харьков'}}</strong></td>
                     </tr>
                     <tr>
-                        <td class="tg-031e">Дата начала тренировок:<strong>{{$oneEmployee->start_training?? '2000-01-01'}}</strong>
+                        <td class="border-bottom">Дата начала тренировок: <strong>{{$oneEmployee->start_training?? '2000-01-01'}}</strong>
                         </td>
                     </tr>
                     <tr>
-                        <td class="tg-031e">Позиция на поле:<strong>{{$oneEmployee->position?? 'Защитник'}}</strong></td>
+                        <td class="border-bottom">Позиция на поле: <strong>{{$oneEmployee->position?? 'Защитник'}}</strong></td>
                     </tr>
                     <tr>
-                        <td class="tg-031e">Номер в команде:<strong>{{$oneEmployee->number??'10'}}</strong></td>
+                        <td class="border-bottom">Номер в команде: <strong>{{$oneEmployee->number??'10'}}</strong></td>
                     </tr>
                     <tr>
-                        <td class="tg-031e">Хват клюшки: <strong>{{$oneEmployee->hand??'Левый'}}</strong></td>
+                        <td class="border-bottom">Хват клюшки:  <strong>{{$oneEmployee->hand??'Левый'}}</strong></td>
                     </tr>
                     <tr>
-                        <td class="tg-031e">Рост:<strong>{{$oneEmployee->height??'120'}}</strong></td>
+                        <td class="border-bottom">Рост: <strong>{{$oneEmployee->height??'120'}}</strong></td>
                     </tr>
                     <tr>
-                        <td class="tg-031e">Вес:<strong>{{$oneEmployee->weight??'30'}}</strong></td>
+                        <td class="border-bottom">Вес: <strong>{{$oneEmployee->weight??'30'}}</strong></td>
                     </tr>
                     <tr>
-                        <td class="tg-031e">Любимая команда:<strong>{{$oneEmployee->fav_team??'омманда №1'}}</strong></td>
+                        <td class="">Любимая команда: <strong>{{$oneEmployee->fav_team??'омманда №1'}}</strong></td>
                     </tr>
                     </tbody>
                 </table>
