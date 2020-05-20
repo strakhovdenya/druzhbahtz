@@ -13,7 +13,7 @@ $factory->define(Employees::class, function (Faker $faker) {
 
     'born'=> $faker->dateTimeBetween('-20 years','-17 years'),
     'start_training'=> $faker->dateTimeBetween('-13 years','-10 years'),
-    'game_number'=> str_pad($faker->randomNumber(2),2,"0",STR_PAD_LEFT),
+    'game_number'=> str_pad($faker->randomNumber(2),1,"0",STR_PAD_LEFT),
     'place_born'=> $faker->city,
     'place_study'=> $faker->city,
 

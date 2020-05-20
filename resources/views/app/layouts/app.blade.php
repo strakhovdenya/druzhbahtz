@@ -5,6 +5,7 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{{mix('css/app.css')}}">
+    <script src="https://kit.fontawesome.com/63531807ce.js" crossorigin="anonymous"></script>
     <title>Дружба ХТЗ @yield('title')</title>
 </head>
 <body>
@@ -14,11 +15,11 @@
         @include('app.blocks.nav.index')
 </div>
 
+            @include('app.blocks.social')
 <div class="container">
     <div class="row">
 
         <div class="col-sm-3 pl-0 pr-0 border">
-            @include('app.blocks.social')
             @include('app.blocks.sidebar.left.index')
         </div>
         <div class="col-sm-9 pr-0">
