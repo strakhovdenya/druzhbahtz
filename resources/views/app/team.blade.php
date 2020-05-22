@@ -6,7 +6,7 @@
     @php($chunkItems = 5)
 
     @forelse ($team as $group)
-        <h2 class="container text-center bg-custom-red text-white mt-3 mb-1">- - - - {{$group->first()->position}} - - - -</h2>
+        <h2 class="container text-center text-info mt-3 mb-1">- - - - {{$group->first()->position}} - - - -</h2>
         <div class="container">
             @forelse ($group->chunk($chunkItems) as $chunk)
                 <div class="card-deck pt-1">

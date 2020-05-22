@@ -28,8 +28,11 @@ class CreateEmployeesTable extends Migration
             $table->string('image',250)->nullable();
             $table->string('fav_team',150);
             $table->text('additional_info');
+            $table->unsignedBigInteger('team_id');
             $table->softDeletes();
             $table->timestamps();
+
+            $table->foreign('team_id')->references('id')->on('teams')->onDelete('cascade');
         });
     }
 

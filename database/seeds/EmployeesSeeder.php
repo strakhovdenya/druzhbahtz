@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Employees;
+use App\Models\Team;
 use Illuminate\Database\Seeder;
 
 class EmployeesSeeder extends Seeder
@@ -82,11 +83,13 @@ class EmployeesSeeder extends Seeder
 </tr>
 </tbody>
 </table>';
-        $employees       = factory(Employees::class, 80)->make()->each(function ($employee) use ($position, $hand, $additional_info, $images) {
+        $teamIds = Team::pluck('id')->toArray();
+        $employees       = factory(Employees::class, 80)->make()->each(function ($employee) use ($position, $hand, $additional_info, $images, $teamIds) {
             $employee->hand            = $hand[array_rand($hand)];
             $employee->position        = $position[array_rand($position)];
             $employee->additional_info = $additional_info;
-            $employee->image = $images[array_rand($images)];;
+            $employee->image = $images[array_rand($images)];
+            $employee->team_id = $teamIds[array_rand($teamIds)];
         })->toArray();
         Employees::insert($employees);
     }
