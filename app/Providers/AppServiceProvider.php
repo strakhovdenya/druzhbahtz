@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Http\ViewComposers\BirthdayComposer;
 use App\Http\ViewComposers\NewsComposer;
+use App\Http\ViewComposers\TeamComposer;
 use App\Models\Employees;
 use App\Models\News;
 use Carbon\Carbon;
@@ -39,5 +40,10 @@ class AppServiceProvider extends ServiceProvider
             'app.blocks.sidebar.left.birthday',
             BirthdayComposer::class
         );
+        view()->composer(
+            'app.blocks.nav.index',
+            TeamComposer::class
+        );
+
     }
 }

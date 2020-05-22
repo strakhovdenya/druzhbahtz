@@ -9,6 +9,7 @@ return [
     ],
     'training_places'  => 'Місця тренувань',
     'team'             => 'КОММАНДА',
+    'team_all'             => 'УСI',
     'competition'      => 'ЗМАГАННЯ',
     'competition_type' => [
         'club_cup'    => 'Кубок клубу',

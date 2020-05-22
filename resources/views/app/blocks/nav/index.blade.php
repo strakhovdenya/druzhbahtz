@@ -28,8 +28,15 @@
                         <a class="dropdown-item-nav text-white" href="{{route('trainingPlaces')}}">@lang('navigation.training_places')</a>
                     </div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link menu__link" href="{{route('team')}}">@lang('navigation.team')</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link menu__link menu__link_group" href="#">@lang('navigation.team')</a>
+                    <div class="dropdown-menu bg-custom-red nav-shadow">
+                        <a class="dropdown-item-nav text-white" href="{{route('team')}}">@lang('navigation.team_all')</a>
+                        <div class="dropdown-divider"></div>
+                        @foreach($teams as $team)
+                            <a class="dropdown-item-nav text-white" href="{{route('team')}}/{{$team->id}}">{{$team->name}}</a>
+                        @endforeach
+                    </div>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link menu__link_group menu__link" href="#" id="navbardrop1" data-toggle="dropdown">
