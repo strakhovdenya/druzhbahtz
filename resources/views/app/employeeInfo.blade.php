@@ -11,38 +11,50 @@
         </div>
     </nav>
     <div class="tab-content " id="nav-tabContent">
-        <div class="tab-pane fade show active border-danger" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+        <div class="tab-pane fade show active border-danger" id="nav-home" role="tabpanel"
+             aria-labelledby="nav-home-tab">
             <div class="container container-fluid mt-1 pr-0 pl-0 border-danger">
                 <table class="table table-borderless">
                     <tbody>
                     <tr>
-                        <th class="tg-031e" rowspan="10">
+                        <th class="tg-031e" rowspan="11">
                             <a class="gallery" rel="group" title="10.07.2012"
                                href="/storage/images/employees/{{$oneEmployee->image ?? 'empty_foto-min.jpg'}}">
                                 <img width="350px" alt="no foto"
                                      class="img-fluid img-thumbnail"
                                      src="/storage/images/employees/{{$oneEmployee->image?? 'empty_foto-min.jpg'}}"></a>
                         </th>
-                        <th class="border-bottom">Дата рождения: <strong>{{$oneEmployee->born?? '2000-01-01'}}</strong></th>
+                        <th class="border-bottom">
+                                Комманда: {{$oneEmployee->team->name}}
+
+                        </th>
                     </tr>
                     <tr>
-                        <td class="border-bottom">Место рождения: <strong>{{$oneEmployee->place_born??'Харьков'}}</strong></td>
-                    </tr>
-                    <tr>
-                        <td class="border-bottom">Место учебы: <strong>{{$oneEmployee->place_study??'Харьков'}}</strong></td>
-                    </tr>
-                    <tr>
-                        <td class="border-bottom">Дата начала тренировок: <strong>{{$oneEmployee->start_training?? '2000-01-01'}}</strong>
+                        <td class="border-bottom ">Дата рождения: <strong>{{$oneEmployee->born?? '2000-01-01'}}</strong>
                         </td>
                     </tr>
                     <tr>
-                        <td class="border-bottom">Позиция на поле: <strong>{{$oneEmployee->position?? 'Защитник'}}</strong></td>
+                        <td class="border-bottom">Место рождения:
+                            <strong>{{$oneEmployee->place_born??'Харьков'}}</strong></td>
+                    </tr>
+                    <tr>
+                        <td class="border-bottom">Место учебы: <strong>{{$oneEmployee->place_study??'Харьков'}}</strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="border-bottom">Дата начала тренировок:
+                            <strong>{{$oneEmployee->start_training?? '2000-01-01'}}</strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="border-bottom">Позиция на поле:
+                            <strong>{{$oneEmployee->position?? 'Защитник'}}</strong></td>
                     </tr>
                     <tr>
                         <td class="border-bottom">Номер в команде: <strong>{{$oneEmployee->number??'10'}}</strong></td>
                     </tr>
                     <tr>
-                        <td class="border-bottom">Хват клюшки:  <strong>{{$oneEmployee->hand??'Левый'}}</strong></td>
+                        <td class="border-bottom">Хват клюшки: <strong>{{$oneEmployee->hand??'Левый'}}</strong></td>
                     </tr>
                     <tr>
                         <td class="border-bottom">Рост: <strong>{{$oneEmployee->height??'120'}}</strong></td>

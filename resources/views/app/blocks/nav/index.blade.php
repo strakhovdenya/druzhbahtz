@@ -34,7 +34,7 @@
                         <a class="dropdown-item-nav text-white" href="{{route('team')}}">@lang('navigation.team_all')</a>
                         <div class="dropdown-divider"></div>
                         @foreach($teams as $team)
-                            <a class="dropdown-item-nav text-white" href="{{route('team')}}/{{$team->id}}">{{$team->name}}</a>
+                            <a class="dropdown-item-nav text-white" href="{{route('team_one',['id'=>$team->id])}}">{{$team->name}}</a>
                         @endforeach
                     </div>
                 </li>

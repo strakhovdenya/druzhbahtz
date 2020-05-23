@@ -39,7 +39,8 @@ Route::get('/trainingPlaces', function () {
     return view('app.trainingPlaces');
 })->name('trainingPlaces');
 
-Route::get('/team', 'TeamController@index')->name('team');
+Route::get('/team_players', 'TeamPlayersController@index')->name('team');
+Route::get('/team_players/{id}', 'TeamPlayersController@show')->name('team_one');
 
 Route::get('/employees/{id?}', function ($id = null) {
     if ($id !== null) {

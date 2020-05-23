@@ -38,7 +38,7 @@
 
 <div class="card position-relative m-1 property-card-main">
     <div class="property-card card-body p-0">
-        <a class="text-decoration-none" href="{{route('employees')}}/{{$oneEmployee->id}}">
+        <a class="text-decoration-none" href="{{route('employees',['id'=>$oneEmployee->id])}}">
             <div class="property-image"
                  style="background-image: url('/storage/images/employees/{{$oneEmployee->image}}');">
                 <div class="property-image-title">
