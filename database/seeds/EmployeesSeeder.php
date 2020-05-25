@@ -1,7 +1,7 @@
 <?php
 
 use App\Models\Employees;
-use App\Models\Team;
+use App\Models\Teams;
 use Illuminate\Database\Seeder;
 
 class EmployeesSeeder extends Seeder
@@ -83,7 +83,7 @@ class EmployeesSeeder extends Seeder
 </tr>
 </tbody>
 </table>';
-        $teamIds = Team::pluck('id')->toArray();
+        $teamIds = Teams::pluck('id')->toArray();
         $employees       = factory(Employees::class, 80)->make()->each(function ($employee) use ($position, $hand, $additional_info, $images, $teamIds) {
             $employee->hand            = $hand[array_rand($hand)];
             $employee->position        = $position[array_rand($position)];

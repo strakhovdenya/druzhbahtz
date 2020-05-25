@@ -9,6 +9,6 @@ class Employees extends Model
 {
     public function team(): BelongsTo
     {
-        return $this->belongsTo(Team::class);
+        return $this->belongsTo(Teams::class);
     }
 }

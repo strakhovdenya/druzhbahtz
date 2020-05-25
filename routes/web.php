@@ -27,13 +27,20 @@ Route::get('/setTo', function () {
     return view('app.setTo');
 })->name('setTo');
 
-Route::get('/scheduleJunior', function () {
-    return view('app.scheduleJunior');
-})->name('scheduleJunior');
+//Route::get('/scheduleJunior', function () {
+//    return view('app.scheduleJunior');
+//})->name('scheduleJunior');
 
-Route::get('/scheduleSenior', function () {
-    return view('app.scheduleSenior');
-})->name('scheduleSenior');
+Route::get('/scheduleJunior', [
+        'uses' => 'TrainingScheduleController@index',
+        'is_junior' => true
+    ]
+)->name('scheduleJunior');
+
+Route::get('/scheduleSenior', [
+    'uses' => 'TrainingScheduleController@index',
+    'is_junior' => false
+])->name('scheduleSenior');
 
 Route::get('/trainingPlaces', function () {
     return view('app.trainingPlaces');
