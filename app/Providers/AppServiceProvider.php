@@ -45,5 +45,37 @@ class AppServiceProvider extends ServiceProvider
             TeamComposer::class
         );
 
+        \Blade::directive('formatToDate', static function ($date) {
+            return "<?php echo \Illuminate\Support\Carbon::parse($date)->format('d.m.Y'); ?>";
+        });
+
+        \Blade::directive('formatToWeekDay', static function ($date) {
+            return "<?php echo \Illuminate\Support\Carbon::parse($date)->getTranslatedShortDayName('dd'); ?>";
+        });
+
+        \Blade::directive('formatToHourSMinutes', static function ($date) {
+
+                return "<?php
+                 if(empty({$date})){
+                        echo '';
+                 } else {
+                        echo \Illuminate\Support\Carbon::parse({$date})->format('H:i');
+                 }
+                 ?>";
+
+        });
+
+        \Blade::directive('ifWeekendSetTrRed', static function ($date) {
+
+            return "<?php
+                        if(in_array(\Illuminate\Support\Carbon::parse({$date})->dayOfWeek,[0,6])){
+                            echo '<tr bgcolor=\'#ff6347\'>';
+                        } else {
+                            echo '<tr>';
+                        }
+                 ?>";
+
+        });
+
     }
 }

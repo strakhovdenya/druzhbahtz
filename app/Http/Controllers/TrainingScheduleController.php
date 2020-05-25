@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Periods;
+use App\Models\TrainingSchedules;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class TrainingScheduleController extends Controller
@@ -11,10 +14,13 @@ class TrainingScheduleController extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index(Request $request)
+    public function index()
     {
-        return view('app.scheduleJunior');
-//        return view('app.scheduleSenior');
+        $period = Periods::where('name', Carbon::now()->startOfMonth())->firstOrFail();
+
+
+        $schedule = TrainingSchedules::where('period_id',$period->id)->where('is_junior','=', true)->get();
+        return view('app.scheduleJunior',['schedule'=>$schedule]);
     }
 
     /**
