@@ -31,9 +31,7 @@ Route::get('/setTo', function () {
 //    return view('app.scheduleJunior');
 //})->name('scheduleJunior');
 
-Route::get('/scheduleJunior', 'TrainingScheduleController@index')->name('scheduleJunior');
-
-Route::get('/scheduleSenior', 'TrainingScheduleController@index')->name('scheduleSenior');
+Route::get('/schedule{type}', 'TrainingScheduleController@index')->name('schedule');
 
 Route::get('/trainingPlaces', function () {
     return view('app.trainingPlaces');

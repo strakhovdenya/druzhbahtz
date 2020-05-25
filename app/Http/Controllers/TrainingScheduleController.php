@@ -14,13 +14,15 @@ class TrainingScheduleController extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index()
+    public function index($type)
     {
         $period = Periods::where('name', Carbon::now()->startOfMonth())->firstOrFail();
 
+        $isJunior = $type === 'junior';
 
-        $schedule = TrainingSchedules::where('period_id',$period->id)->where('is_junior','=', true)->get();
-        return view('app.scheduleJunior',['schedule'=>$schedule]);
+        $schedule = TrainingSchedules::where('period_id', $period->id)->where('is_junior', '=', $isJunior)->get();
+
+        return view('app.schedule', compact('schedule', 'isJunior'));
     }
 
     /**
@@ -36,7 +38,8 @@ class TrainingScheduleController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -47,7 +50,8 @@ class TrainingScheduleController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -58,7 +62,8 @@ class TrainingScheduleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -69,8 +74,9 @@ class TrainingScheduleController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -81,7 +87,8 @@ class TrainingScheduleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

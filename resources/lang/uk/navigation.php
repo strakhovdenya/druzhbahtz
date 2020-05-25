@@ -20,5 +20,7 @@ return [
     'events'   => 'ПОДІЇ',
     'contacts' => 'КОНТАКТИ',
     'fan_club' => 'ФАН-КЛУБ',
+    'is_junior' =>'РОЗКЛАД МОЛОДШI',
+    'is_senior' =>'РОЗКЛАД СТАРШI',
 
 ];

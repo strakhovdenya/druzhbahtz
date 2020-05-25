@@ -22,8 +22,8 @@
                         @lang('navigation.training')
                     </a>
                     <div class="dropdown-menu bg-custom-red nav-shadow">
-                        <a class="dropdown-item-nav text-white " href="{{route('scheduleJunior')}}">@lang('navigation.schedule.junior_schedule')</a>
-                        <a class="dropdown-item-nav text-white" href="{{route('scheduleSenior')}}">@lang('navigation.schedule.schedule_senior')</a>
+                        <a class="dropdown-item-nav text-white " href="{{route('schedule',['type'=>'junior'])}}">@lang('navigation.schedule.junior_schedule')</a>
+                        <a class="dropdown-item-nav text-white" href="{{route('schedule',['type'=>'senior'])}}">@lang('navigation.schedule.schedule_senior')</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item-nav text-white" href="{{route('trainingPlaces')}}">@lang('navigation.training_places')</a>
                     </div>
