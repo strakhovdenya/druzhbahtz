@@ -6,6 +6,7 @@
           content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{{mix('css/app.css')}}">
     <script src="https://kit.fontawesome.com/63531807ce.js" crossorigin="anonymous"></script>
+    <livewire:styles>
     <title>Дружба ХТЗ @yield('title')</title>
 </head>
 <body>
@@ -32,5 +33,6 @@
 
 @include('app.blocks.footer.index')
 <script src="{{mix('/js/app.js')}}"></script>
+<livewire:scripts>
 </body>
 </html>
