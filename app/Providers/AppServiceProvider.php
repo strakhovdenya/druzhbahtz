@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Http\ViewComposers\BirthdayComposer;
+use App\Http\ViewComposers\CalendarComposer;
 use App\Http\ViewComposers\NewsComposer;
 use App\Http\ViewComposers\TeamComposer;
 use App\Models\Employees;
@@ -43,6 +44,10 @@ class AppServiceProvider extends ServiceProvider
         view()->composer(
             'app.blocks.nav.index',
             TeamComposer::class
+        );
+        view()->composer(
+            'app.blocks.sidebar.left.calendar',
+            CalendarComposer::class
         );
 
         \Blade::directive('formatToDate', static function ($date) {
