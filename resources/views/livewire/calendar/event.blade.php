@@ -1,24 +1,26 @@
 <div class="calendar shadow bg-white p-2">
-    <div class="d-flex align-items-center">
-        <i class="far fa-calendar-alt fa-3x mr-3"></i>
-        <h3 class="month font-weight-bold mb-0 text-uppercase">{{$monthYearText}}</h3>
-    </div>
-    <p class="font-italic text-muted mb-1">No events for this day.</p>
+    @include('app.blocks.calendar.headOfCalendar')
 
     @include('app.blocks.calendar.weekDayName')
 
     <ol class="days list-unstyled">
         @foreach($beforePeriod as $day)
-            <li class="outside">
+            <li class="outside text-center">
                 <div class="date">{{$day->day}}</div>
             </li>
         @endforeach
         @for($i = 1; $i<= ($countDays); $i++)
             <li>
                 <div wire:click="addEvent({{$i}})"
-                     class="date text-center {{$event[$i]['event']??''}} {{$event[$i]['current']??''}}">{{$i}}</div>
+                     class="date date-cursor text-center {{$event[$i]['event']??''}} {{$event[$i]['current']??''}}">{{$i}}</div>
             </li>
         @endfor
+        @foreach($afterPeriod as $day)
+            <li class="outside text-center">
+                <div class="date">{{$day->day}}</div>
+            </li>
+        @endforeach
+
         {{--        <li>--}}
         {{--            <div wire:click="addEvent(2)" class="date {{$event[2]??''}}">2</div>--}}
         {{--        </li>--}}
@@ -54,7 +56,7 @@
         {{--        </li>--}}
         {{--        <li>--}}
         {{--            <div class="date">13</div>--}}
-        {{--            --}}{{--                    <div class="event all-day begin span-2 bg-warning">Event Name</div>--}}
+        {{--                    <div class="event all-day begin span-2 bg-warning">Event Name</div>--}}
         {{--        </li>--}}
         {{--        <li>--}}
         {{--            <div class="date">14</div>--}}
@@ -114,26 +116,26 @@
         {{--        <li>--}}
         {{--            <div class="date">31</div>--}}
         {{--        </li>--}}
-        <li class="outside">
-            <div class="date">1</div>
-        </li>
-        <li class="outside">
-            <div class="date">2</div>
-        </li>
-        <li class="outside">
-            <div class="date">3</div>
-        </li>
-        <li class="outside">
-            <div class="date">4</div>
-        </li>
-        <li class="outside">
-            <div class="date">5</div>
-        </li>
-        <li class="outside">
-            <div class="date">6</div>
-        </li>
-        <li class="outside">
-            <div class="date">7</div>
-        </li>
+        {{--        <li class="outside">--}}
+        {{--            <div class="date">1</div>--}}
+        {{--        </li>--}}
+        {{--        <li class="outside">--}}
+        {{--            <div class="date">2</div>--}}
+        {{--        </li>--}}
+        {{--        <li class="outside">--}}
+        {{--            <div class="date">3</div>--}}
+        {{--        </li>--}}
+        {{--        <li class="outside">--}}
+        {{--            <div class="date">4</div>--}}
+        {{--        </li>--}}
+        {{--        <li class="outside">--}}
+        {{--            <div class="date">5</div>--}}
+        {{--        </li>--}}
+        {{--        <li class="outside">--}}
+        {{--            <div class="date">6</div>--}}
+        {{--        </li>--}}
+        {{--        <li class="outside">--}}
+        {{--            <div class="date">7</div>--}}
+        {{--        </li>--}}
     </ol>
 </div>

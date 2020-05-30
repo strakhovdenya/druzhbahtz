@@ -4,8 +4,8 @@
     <li class="font-weight-bold text-uppercase text-center">Ср</li>
     <li class="font-weight-bold text-uppercase text-center">Чт</li>
     <li class="font-weight-bold text-uppercase text-center">Пт</li>
-    <li class="font-weight-bold text-uppercase text-center">Сб</li>
-    <li class="font-weight-bold text-uppercase text-center">Вс</li>
+    <li class="font-weight-bold text-uppercase text-center text-danger">Сб</li>
+    <li class="font-weight-bold text-uppercase text-center text-danger">Вс</li>
 </ol>
 
 

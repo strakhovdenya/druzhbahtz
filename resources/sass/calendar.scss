@@ -48,6 +48,10 @@ Calendar Styling */
 .calendar .days li .date {
     margin: 0.5rem 0;
 }
+.calendar .days li .date-cursor:hover {
+    cursor: pointer;
+}
+
 
 .calendar .days li .event {
     font-size: 0.75rem;
