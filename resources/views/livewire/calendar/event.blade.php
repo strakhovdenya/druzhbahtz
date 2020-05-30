@@ -9,10 +9,17 @@
                 <div class="date">{{$day->day}}</div>
             </li>
         @endforeach
-        @for($i = 1; $i<= ($countDays); $i++)
+        @for($dayNum = 1; $dayNum<= ($countDays); $dayNum++)
             <li>
-                <div wire:click="addEvent({{$i}})"
-                     class="date date-cursor text-center {{$event[$i]['event']??''}} {{$event[$i]['current']??''}}">{{$i}}</div>
+                <div
+                    data-toggle="modal" data-target="#exampleModalLong{{$dayNum}}"
+                    class="date date-cursor text-center {{$event[$dayNum]['event_isset']??''}} {{$event[$dayNum]['current']??''}}"
+                >
+                    {{$dayNum}}
+                </div>
+                @if(isset($event[$dayNum]['event_data']))
+                    @include('app.blocks.calendar.modalOfCalendar', ['oneEvent'=>$event[$dayNum]['event_data']])
+                @endif
             </li>
         @endfor
         @foreach($afterPeriod as $day)

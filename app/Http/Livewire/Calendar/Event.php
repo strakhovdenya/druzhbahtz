@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Calendar;
 
+use App\Models\CalendarEvents;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
 use Illuminate\Contracts\Foundation\Application;
@@ -15,16 +16,7 @@ class Event extends Component
 
     public $monthYearText;
 
-    public $monthYear;
-
     public $countDays;
-
-    public $startCurrentPeriod;
-
-    public $endCurrentPeriod;
-
-    public $currentDayText;
-
 
     /**
      *
@@ -39,25 +31,9 @@ class Event extends Component
                 'end_current_period'   => Carbon::now()->endOfMonth()->format('Y-m-d'),
             ]);
         }
-        //        $this->currentDayText = Carbon::now()->format('Y-m-d');
-        //        $this->monthYear      = Carbon::now()->format('Y-m');
-        //
-        //        $this->startCurrentPeriod = Carbon::now()->startOfMonth()->format('Y-m-d');
-        //        $this->endCurrentPeriod   = Carbon::now()->endOfMonth()->format('Y-m-d');
     }
 
-    /**
-     * @param $id
-     */
-    public function addEvent($id): void
-    {
-        if (isset($this->event[$id]['event'])) {
-            $this->event[$id]['event'] = $this->event[$id]['event'] === 'bg-success' ? '' : 'bg-success';
 
-            return;
-        }
-        $this->event[$id]['event'] = 'bg-success';
-    }
 
     /**
      *
@@ -89,15 +65,27 @@ class Event extends Component
         $this->countDays = Carbon::createFromFormat('Y-m', session('month_year'))->daysInMonth;
 
         $this->setMonthYearText();
-        $this->setCurrentDay(session('start_current_period'), session('end_current_period'));
-        $beforePeriod = $this->getBeforeMonthCollection(session('start_current_period'));
-        $afterPeriod  = $this->getAfterMonthCollection(session('end_current_period'));
+        $startCurrentPeriod = session('start_current_period');
+        $endCurrentPeriod   = session('end_current_period');
+
+        $this->setCurrentDay($startCurrentPeriod, $endCurrentPeriod);
+        $beforePeriod = $this->getBeforeMonthCollection($startCurrentPeriod);
+        $afterPeriod  = $this->getAfterMonthCollection($endCurrentPeriod);
+        $this->setMonthEvents($startCurrentPeriod, $endCurrentPeriod);
 
         return view('livewire.calendar.event')
-            ->with([
-                'beforePeriod' => $beforePeriod,
-                'afterPeriod'  => $afterPeriod,
-            ]);
+            ->with(compact('beforePeriod', 'afterPeriod'));
+    }
+
+    private function setMonthEvents($startCurrentPeriod, $endCurrentPeriod)
+    {
+        $events = CalendarEvents::where('date_event', '>=',  $startCurrentPeriod)->where('date_event', '<=',  $endCurrentPeriod)->get();
+        /** @var CalendarEvents $event */
+        foreach ($events as $event){
+            $day = (int)Carbon::createFromFormat('Y-m-d H:i:s',$event->date_event)->format('d');
+            $this->event[$day]['event_isset'] = 'bg-success';
+            $this->event[$day]['event_data'] = $event;
+        }
     }
 
     /**
