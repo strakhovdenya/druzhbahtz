@@ -3,7 +3,7 @@
         <div class="col-2 p-0">
             <i class="far fa-calendar-alt fa-3x"></i>
         </div>
-        <div class="col-1 p-0 pointer-cursor">
+        <div class="col-1 p-0 pointer-cursor bg">
             <i wire:click="subMonth()" class="fas fa-angle-left fa-3x"></i>
         </div>
         <div class="col-8 p-0 align-middle">

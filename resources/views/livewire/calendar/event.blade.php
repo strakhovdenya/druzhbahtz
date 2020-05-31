@@ -12,7 +12,7 @@
         @for($dayNum = 1; $dayNum<= ($countDays); $dayNum++)
             <li>
                 <div
-                    data-toggle="modal" data-target="#exampleModalLong{{$dayNum}}"
+                    data-toggle="modal" data-target="#modalLong{{$dayNum}}"
                     class="date date-cursor text-center {{$event[$dayNum]['event_isset']??''}} {{$event[$dayNum]['current']??''}}"
                 >
                     {{$dayNum}}
