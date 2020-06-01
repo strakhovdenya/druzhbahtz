@@ -12,6 +12,20 @@ class EventsSeeder extends Seeder
      */
     public function run()
     {
-        factory(CalendarEvents::class, 25)->create();
+        $competitors = [
+            'dnepr.png',
+            'galecki_lion.jpg',
+            'krivbas.jpg',
+            'sea_wolf.jpg',
+            'shershni.png',
+            'sokil.jpg',
+            'sokil.jpg',
+
+        ];
+
+        $events =  factory(CalendarEvents::class, 25)->make()->each(function ($event) use ($competitors) {
+            $event->image_competitor            = $competitors[array_rand($competitors)];
+        })->toArray();
+        CalendarEvents::insert($events);
     }
 }

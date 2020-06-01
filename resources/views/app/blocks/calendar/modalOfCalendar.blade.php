@@ -2,7 +2,7 @@
      aria-hidden="true">
     <div class="modal-dialog modal-dialog-custom" role="document">
         <div class="modal-content">
-            <div class="modal-header {{$event[$dayNum]['event_isset']}}">
+            <div class="modal-header {{$event[$dayNum]['bg_modal_title']}}">
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-2 p-0">
@@ -25,10 +25,27 @@
                 </div>
             </div>
             <div class="modal-body">
-                {!! $oneEvent->text !!}
-                {{--                <img--}}
-                {{--                     class="img-fluid img-thumbnail"--}}
-                {{--                     src="/image/empty_foto-min.jpg">--}}
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-4 p-0">
+                            <img class="logo-position-team img-fluid" src="/storage/images/teams/logo-color.png" alt="main-logo">
+                        </div>
+                        <div class="col-4 p-0">
+                            <img class="logo-position-team img-fluid" src="/storage/images/teams/vs.png" alt="main-logo">
+                        </div>
+                        <div class="col-4 p-0">
+                            <img class="logo-position-team img-fluid" src="/storage/images/teams/{{$oneEvent->image_competitor}}" alt="main-logo">
+                        </div>
+                    </div>
+
+                    <div class="row align-items-center">
+                        {!! $oneEvent->text !!}
+                    </div>
+                    <div class="row align-items-center">
+                        {!! $oneEvent->text !!}
+                    </div>
+                </div>
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

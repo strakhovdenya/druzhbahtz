@@ -22,6 +22,7 @@ class CreateCalendarEventsTable extends Migration
             $table->text('text');
             $table->unsignedBigInteger('user_id');
             $table->string('image',250)->nullable();
+            $table->string('image_competitor',250)->nullable();
             $table->timestamps();
             $table->softDeletes();
 

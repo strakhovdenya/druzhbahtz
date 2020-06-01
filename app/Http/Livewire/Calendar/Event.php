@@ -84,9 +84,10 @@ class Event extends Component
         $events = CalendarEvents::where('date_event', '>=', $startCurrentPeriod)->where('date_event', '<=', $endCurrentPeriod)->get();
         /** @var CalendarEvents $event */
         foreach ($events as $event) {
-            $day = (int)Carbon::createFromFormat('Y-m-d H:i:s', $event->date_event)->format('d');
-                        $this->event[$day]['event_isset'] = $event->type_event === 1 ? 'bg-success' : 'bg-custom-yellow';
-            $this->event[$day]['event_data']  = $event;
+            $day                                 = (int)Carbon::createFromFormat('Y-m-d H:i:s', $event->date_event)->format('d');
+            $this->event[$day]['bg_modal_title'] = $event->type_event === 1 ? 'bg-success' : 'bg-custom-yellow';
+            $this->event[$day]['event_isset']    = $event->type_event === 1 ? 'calendar-day-shadow-green' : 'calendar-day-shadow-yellow';
+            $this->event[$day]['event_data']     = $event;
         }
     }
 
