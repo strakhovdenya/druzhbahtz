@@ -13,9 +13,15 @@ class NewsSeeder extends Seeder
      */
     public function run()
     {
-        $userIds = User::pluck('id')->toArray();
-        $news = factory(News::class, 20)->make()->each(function ($oneNews) use ($userIds){
+        $newsImage = [
+            'news1.jpg',
+            'news2.jpg',
+            'news3.jpg',
+        ];
+        $userIds   = User::pluck('id')->toArray();
+        $news      = factory(News::class, 20)->make()->each(function ($oneNews) use ($userIds, $newsImage) {
             $oneNews->user_id = $userIds[array_rand($userIds)];
+            $oneNews->image   = $newsImage[array_rand($newsImage)];
         })->toArray();
         News::insert($news);
     }

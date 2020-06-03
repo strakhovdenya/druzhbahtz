@@ -12,8 +12,8 @@
         @include('app.blocks.schedule.tableHead')
         <tbody>
         @foreach($schedule as $day)
-        @ifWeekendSetTrRed($day->day)
-            <th class="pl-2" scope="row">@formatToDate($day->day), @formatToWeekDay($day->day)</th>
+            @ifWeekendSetTrRed($day->day)
+            <th class="pl-2" scope="row">@ifToDay($day->day)  @formatToDate($day->day), @formatToWeekDay($day->day)</th>
             <td class="text-center">@formatToHourSMinutes($day->ice_start) - @formatToHourSMinutes($day->ice_end)</td>
             <td class="pl-2">{{$day->ice_place}}</td>
             <td class="text-center">@formatToHourSMinutes($day->ground_start) - @formatToHourSMinutes($day->ground_end)</td>

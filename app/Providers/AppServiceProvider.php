@@ -60,7 +60,7 @@ class AppServiceProvider extends ServiceProvider
 
         \Blade::directive('formatToHourSMinutes', static function ($date) {
 
-                return "<?php
+            return "<?php
                  if(empty({$date})){
                         echo '';
                  } else {
@@ -71,12 +71,25 @@ class AppServiceProvider extends ServiceProvider
         });
 
         \Blade::directive('ifWeekendSetTrRed', static function ($date) {
-
-            return "<?php
+            return "<?php" .
+                "
                         if(in_array(\Illuminate\Support\Carbon::parse({$date})->dayOfWeek,[0,6])){
                             echo '<tr bgcolor=\'#ff6347\'>';
                         } else {
                             echo '<tr>';
+
+                        }
+                 ?>";
+
+        });
+
+        \Blade::directive('ifToDay', static function ($date) {
+            $now = \Illuminate\Support\Carbon::now()->format('Y-m-d');
+            return "<?php
+                        if(\Illuminate\Support\Carbon::parse({$date})->format('Y-m-d') === '$now'){
+                            echo '<i class=\"fas fa-check\"></i>';
+                        }else{
+                            echo '';
                         }
                  ?>";
 

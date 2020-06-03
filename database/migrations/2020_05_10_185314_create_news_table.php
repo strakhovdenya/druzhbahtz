@@ -19,6 +19,7 @@ class CreateNewsTable extends Migration
             $table->string('description',250);
             $table->text('text');
             $table->timestamp('date_event');
+            $table->string('image',250)->nullable();
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
             $table->softDeletes();

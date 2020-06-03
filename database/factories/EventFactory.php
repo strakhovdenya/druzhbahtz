@@ -11,7 +11,7 @@ $factory->define(CalendarEvents::class, function (Faker $faker) {
         'text'       => $faker->realText(400),
         'user_id'    => 1,
         'type_event' => rand(1, 2),
-        'date_event' => $faker->dateTimeBetween('2020-03-01', '2020-06-31'),
-        'date_add'   => $faker->dateTimeBetween('2020-03-01', '2020-06-31'),
+        'date_event' => $faker->dateTimeBetween('2020-05-01', '2020-08-30'),
+        'date_add'   => $faker->dateTimeBetween('2020-05-01', '2020-08-30'),
     ];
 });
