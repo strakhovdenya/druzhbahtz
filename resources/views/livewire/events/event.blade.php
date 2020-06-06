@@ -1,4 +1,5 @@
 <div>
+    @include('livewire.events.search')
     @if(empty($events)===false)
         @foreach($events as $event)
             <div class="card border-0 mb-2">
