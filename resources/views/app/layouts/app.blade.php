@@ -20,7 +20,7 @@
 <div class="container">
     <div class="row">
 
-        <div class="col-sm-3 pl-0 pr-0 border">
+        <div class="col-sm-3 pl-0 pr-0">
             @include('app.blocks.sidebar.left.index')
         </div>
         <div class="col-sm-9 pr-0">

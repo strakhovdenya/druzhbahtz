@@ -14,6 +14,6 @@
         </div>
     </div>
 </div>
-<p class="font-italic text-muted mb-1">No events for this day.</p>
+
 
 
