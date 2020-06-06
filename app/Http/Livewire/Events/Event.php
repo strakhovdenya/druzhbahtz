@@ -27,6 +27,8 @@ class Event extends Component
     public $todayAndBeyond = '';
     public $earlier = '';
 
+    public $ordering = '';
+
     public $events;
 
     /**
@@ -47,14 +49,12 @@ class Event extends Component
     {
         $this->all            = 'active';
         $this->todayAndBeyond = 'active';
-        $this->events         = CalendarEvents::orderBy('date_event', 'DESC')->where('date_event', '>=', $this->today->format('Y-m-d'))->get();
-        if (empty($this->events)) {
-            $this->events = collect([]);
-        }
+        $this->ordering       = 'DESC';
     }
 
     public function render()
     {
+        $this->setEventsForParams();
         return view('livewire.events.event');
     }
 
@@ -64,8 +64,6 @@ class Event extends Component
     public function getHome(): void
     {
         $this->switchToPlace(self::HOME);
-        $builder = CalendarEvents::orderBy('date_event', 'DESC')->where('type_event', 2);
-        $this->setEventsForPlace($builder);
     }
 
     /**
@@ -74,8 +72,6 @@ class Event extends Component
     public function getOnRoad(): void
     {
         $this->switchToPlace(self::ON_ROAD);
-        $builder = CalendarEvents::orderBy('date_event', 'DESC')->where('type_event', 1);
-        $this->setEventsForPlace($builder);
     }
 
     /**
@@ -84,8 +80,6 @@ class Event extends Component
     public function getAll(): void
     {
         $this->switchToPlace(self::ALL);
-        $builder = CalendarEvents::orderBy('date_event', 'DESC');
-        $this->setEventsForPlace($builder);
     }
 
     /**
@@ -94,8 +88,6 @@ class Event extends Component
     public function getAllDays(): void
     {
         $this->switchToDate(self::ALL_DAYS);
-        $builder = CalendarEvents::orderBy('date_event', 'DESC');
-        $this->setEventsForDays($builder);
     }
 
     /**
@@ -104,8 +96,6 @@ class Event extends Component
     public function getTodayAndBeyonds(): void
     {
         $this->switchToDate(self::TODAY_AND_BEYOND);
-        $builder = CalendarEvents::orderBy('date_event', 'DESC')->where('date_event', '>=', $this->today->format('Y-m-d'));
-        $this->setEventsForDays($builder);
     }
 
     /**
@@ -114,32 +104,21 @@ class Event extends Component
     public function getEarlier(): void
     {
         $this->switchToDate(self::EARLIER);
-        $builder = CalendarEvents::orderBy('date_event', 'DESC')->where('date_event', '<', $this->today->format('Y-m-d'));
-        $this->setEventsForDays($builder);
     }
 
     /**
-     * @param Builder $builder
+     *
      */
-    private function setEventsForDays(Builder $builder): void
+    private function setEventsForParams(): void
     {
+        $builder = CalendarEvents::orderBy('date_event', $this->ordering);
+
         if (empty($this->home) === false) {
             $builder->where('type_event', 2);
         } elseif (empty($this->onRoad) === false) {
             $builder->where('type_event', 1);
         }
 
-        $this->events = $builder->get();
-        if (empty($this->events)) {
-            $this->events = collect([]);
-        }
-    }
-
-    /**
-     * @param Builder $builder
-     */
-    private function setEventsForPlace(Builder $builder): void
-    {
         if (empty($this->todayAndBeyond) === false) {
             $builder->where('date_event', '>=', $this->today->format('Y-m-d'));
         } elseif (empty($this->earlier) === false) {

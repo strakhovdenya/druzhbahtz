@@ -5,16 +5,16 @@
             <div class="card border-0 mb-2">
                 <div class="row">
                     <div class="col-sm-3 d-flex">
-                        <div class="row p-4 align-items-center">
-                            <div class="col-4 p-0">
+                        <div class="row pl-4 align-items-center">
+                            <div class="col-5 p-0">
                                 <img class="logo-position-team img-fluid" src="/storage/images/teams/logo-color.png"
                                      alt="main-logo">
                             </div>
-                            <div class="col-4 p-0">
+                            <div class="col-2 p-0">
                                 <img class="logo-position-team img-fluid" src="/storage/images/teams/vs.png"
                                      alt="main-logo">
                             </div>
-                            <div class="col-4 p-0">
+                            <div class="col-5 p-0">
                                 <img class="logo-position-team img-fluid"
                                      src="/storage/images/teams/{{$event->image_competitor}}" alt="main-logo">
                             </div>
@@ -40,7 +40,7 @@
                 </div>
             </div>
             @if ($loop->last !== true)
-                <hr class="mb-1 mt-1">
+                <hr class="mb-1 mt-1 bg-custom-blue" style="height: 2px">
             @endif
         @endforeach
     @endif
