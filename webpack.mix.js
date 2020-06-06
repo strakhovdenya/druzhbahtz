@@ -11,7 +11,8 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+mix.js('resources/js/app.js', 'public/js').sourceMaps().version();
+mix.sass('resources/sass/app.scss', 'public/css').sourceMaps().version();
+
 mix.options({ processCssUrls: false })
     .copy('resources/webfonts', 'public/webfonts');
