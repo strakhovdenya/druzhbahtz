@@ -1,5 +1,9 @@
 @extends('app.layouts.app')
 
+@section('slider')
+    @include('app.blocks.slider')
+@endsection
+
 @section('content')
     <h1 class="container text-center bg-custom-blue text-white">О нас</h1>
     <p>На відміну від поширеної думки Lorem Ipsum не є
@@ -18,6 +22,3 @@
     </p>
 @endsection
 
-@section('slider')
-    @include('app.blocks.slider')
-@endsection

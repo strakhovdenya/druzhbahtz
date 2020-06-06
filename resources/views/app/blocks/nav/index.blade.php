@@ -50,8 +50,14 @@
                 <li class="nav-item">
                     <a class="nav-link menu__link" href="{{route('gallery')}}">@lang('navigation.gallery')</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link menu__link" href="#">@lang('navigation.events')</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link menu__link_group menu__link" href="#" id="navbardrop1" data-toggle="dropdown">
+                        @lang('navigation.events')
+                    </a>
+                    <div class="dropdown-menu bg-custom-red nav-shadow">
+                        <a class="dropdown-item-nav text-white" href="{{route('tournaments')}}">@lang('navigation.events_type.news')</a>
+                        <a class="dropdown-item-nav text-white" href="{{route('events')}}">@lang('navigation.events_type.events')</a>
+                    </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link menu__link" href="#">@lang('navigation.contacts')</a>

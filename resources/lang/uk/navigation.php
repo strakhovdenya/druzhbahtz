@@ -17,7 +17,11 @@ return [
     ],
 
     'gallery'  => 'ГАЛЕРЕЯ',
-    'events'   => 'ПОДІЇ',
+    'events'   => 'ПОДІЇ/НОВИНИ',
+    'events_type'   => [
+        'events' => 'Події',
+        'news' => 'Новини',
+    ],
     'contacts' => 'КОНТАКТИ',
     'fan_club' => 'ФАН-КЛУБ',
     'is_junior' =>'РОЗКЛАД МОЛОДШI',

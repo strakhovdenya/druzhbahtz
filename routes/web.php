@@ -58,6 +58,8 @@ Route::get('/clubCup/{id?}', function ($id = null) {
     return view('app.clubCup', ['id' => $id]);
 })->name('clubCup');
 
+Route::get('/events', 'EventsController@index')->name('events');
+
 Route::get('/gallery', function () {
     return view('app.gallery');
 })->name('gallery');
