@@ -1,5 +1,5 @@
-<div class="d-flex justify-content-around">
-    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+<div class="d-flex justify-content-around mb-3">
+    <div class="btn-group btn-group-toggle shadow" data-toggle="buttons">
         <label wire:click="getAll()" class="btn btn-primary {{$all}}">
             <input type="radio" name="options" id="option1" autocomplete="off" checked>@lang('buttons.all')
         </label>
@@ -11,7 +11,7 @@
         </label>
     </div>
 
-    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+    <div class="btn-group btn-group-toggle shadow" data-toggle="buttons">
         <label wire:click="getAllDays()" class="btn btn-primary {{$allDays}}">
             <input type="radio" name="options" id="option4" autocomplete="off">@lang('buttons.all')
         </label>
@@ -21,6 +21,15 @@
         </label>
         <label wire:click="getEarlier()" class="btn btn-primary {{$earlier}}">
             <input type="radio" name="options" id="option6" autocomplete="off"> @lang('buttons.earlier')
+        </label>
+    </div>
+
+    <div class="btn-group btn-group-toggle shadow" data-toggle="buttons">
+        <label wire:click="getFromUpToDown()" class="btn btn-primary {{$fromUpToDown}}"><i class="fas fa-long-arrow-alt-down"></i>
+            <input type="radio" name="options" id="option7" autocomplete="off" checked>
+        </label>
+        <label wire:click="getFromDownToUp()" class="btn btn-primary {{$fromDownToUp}}">
+            <input type="radio" name="options" id="option8" autocomplete="off"><i class="fas fa-long-arrow-alt-up"></i>
         </label>
     </div>
 </div>

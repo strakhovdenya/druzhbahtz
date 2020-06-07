@@ -19,6 +19,15 @@ class Event extends Component
     private const TODAY_AND_BEYOND = 'todayAndBeyond';
     private const EARLIER          = 'earlier';
 
+
+    private const FROM_UP_TO_DOWN = 'fromUpToDown';
+    private const FROM_DOWN_TO_UP = 'fromDownToUp';
+    private const ORDERING_TYPES  = [
+        self::FROM_DOWN_TO_UP => 'DESC',
+        self::FROM_UP_TO_DOWN => 'ASC',
+    ];
+
+
     public $all = '';
     public $home = '';
     public $onRoad = '';
@@ -28,6 +37,9 @@ class Event extends Component
     public $earlier = '';
 
     public $ordering = '';
+    public $fromUpToDown = '';
+    public $fromDownToUp = '';
+
 
     public $events;
 
@@ -49,12 +61,14 @@ class Event extends Component
     {
         $this->all            = 'active';
         $this->todayAndBeyond = 'active';
-        $this->ordering       = 'DESC';
+        $this->fromDownToUp   = 'active';
+        $this->ordering       = 'ASC';
     }
 
     public function render()
     {
         $this->setEventsForParams();
+
         return view('livewire.events.event');
     }
 
@@ -106,6 +120,16 @@ class Event extends Component
         $this->switchToDate(self::EARLIER);
     }
 
+    public function getFromUpToDown(): void
+    {
+        $this->switchOrdering(self::FROM_UP_TO_DOWN);
+    }
+
+    public function getFromDownToUp(): void
+    {
+        $this->switchOrdering(self::FROM_DOWN_TO_UP);
+    }
+
     /**
      *
      */
@@ -144,14 +168,27 @@ class Event extends Component
     }
 
     /**
-     * @param string $place
+     * @param string $dateType
      */
-    private function switchToDate(string $place): void
+    private function switchToDate(string $dateType): void
     {
         $this->allDays        = '';
         $this->todayAndBeyond = '';
         $this->earlier        = '';
 
-        $this->{$place} = 'active';
+        $this->{$dateType} = 'active';
+    }
+
+    /**
+     * @param string $oreder
+     */
+    private function switchOrdering(string $oreder): void
+    {
+
+        $this->fromUpToDown = '';
+        $this->fromDownToUp = '';
+
+        $this->{$oreder} = 'active';
+        $this->ordering  = self::ORDERING_TYPES[$oreder];
     }
 }

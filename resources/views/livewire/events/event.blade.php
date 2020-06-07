@@ -22,18 +22,18 @@
                     </div>
                     <div class="col-sm-9">
                         <div class="card-block">
-                            <div class="card-header pb-1 d-flex justify-content-between">
+                            <div class="card-header p-1 d-flex justify-content-between align-items-center bg-custom-light-blue">
                                 @if($event->type_event === 1)
-                                    <h4 class="mb-1"><i class="text-success fas fa-bus-alt fa-1x"></i> {{$event->title}}</h4>
+                                    <h4 class="m-0"><i class="text-success fas fa-bus-alt fa-1x"></i> {{$event->title}}</h4>
                                 @else
-                                    <h4 class="mb-1"><i class="text-warning fas fa-home fa-1x"></i> {{$event->title}}</h4>
+                                    <h4 class="m-0"><i class="text-warning fas fa-home fa-1x"></i> {{$event->title}}</h4>
                                 @endif
 
                                 <div class="float-right">{{$event->date_event}}</div>
                             </div>
                             {!! Str::limit($event->text,200) !!}
                             <br>
-                            <a href="#" class="mr-2 btn btn-primary btn-sm float-right">@lang('buttons.read_more')</a>
+                            <a href="#" class="mr-2 btn btn-primary btn-sm float-right shadow">@lang('buttons.read_more')</a>
                         </div>
                     </div>
 
