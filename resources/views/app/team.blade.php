@@ -1,7 +1,7 @@
 @extends('app.layouts.app')
 
 @section('content')
-    <h1 class="container text-center bg-custom-blue text-white">КОММАНДА</h1>
+    <h1 class="container text-center bg-custom-blue text-white">@lang('titles.team')</h1>
 
     @php($chunkItems = 5)
 

@@ -1,7 +1,7 @@
 @extends('app.layouts.app')
 
 @section('content')
-    <h1 class="container text-center bg-custom-blue text-white">Кубок кубку</h1>
+    <h1 class="container text-center bg-custom-blue text-white">@lang('titles.club_cup')</h1>
     <div class="card-deck">
         <div class="card">
             <img class="card-img-top" src="..." alt="Card image cap">

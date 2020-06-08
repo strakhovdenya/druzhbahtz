@@ -4,7 +4,7 @@
             <div class="col-1 p-0">
                 <img class="img-fluid" src="/image/cake_PNG13125.png" alt="">
             </div>
-            <div class="col-10 p-0 text-center text-white">ДЕНЬ РОЖДЕНИЯ</div>
+            <div class="col-10 p-0 text-center text-white">@lang('titles.birthday')</div>
             <div class="col-1 p-0">
                 <img class="img-fluid" src="/image/vozdushnyye-shary.png" alt="">
             </div>
@@ -37,7 +37,7 @@
 
             <div class="row p-2">
                 <div class="col">
-                    <h4 class="text-center text-primary">. . . скоро</h4>
+                    <h4 class="text-center text-primary">. . . @lang('titles.soon')</h4>
                 </div>
             </div>
             @foreach ($borns as $oneBorn)
