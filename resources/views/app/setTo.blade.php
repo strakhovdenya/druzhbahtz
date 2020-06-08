@@ -1,7 +1,7 @@
 @extends('app.layouts.app')
 
 @section('content')
-    <h1 class="container text-center bg-custom-blue text-white">@lang('titles.set_to_druzhba')</h1>
+    <h1 class="container text-center bg-custom-blue text-white shadow">@lang('titles.set_to_druzhba')</h1>
     <p>текст контента о НАБІР до КДЮСШ ХТЗ ХК DRUZHBA</p>
     <p>На відміну від поширеної думки Lorem Ipsum не є
         випадковим набором літер. Він походить з уривку

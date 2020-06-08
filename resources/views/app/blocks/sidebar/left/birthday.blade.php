@@ -1,6 +1,6 @@
 @if(!$bornsToday->isEmpty()|| !$borns->isEmpty())
     <div class="container">
-        <h3 class="row bg-custom-red align-items-center">
+        <h3 class="row bg-custom-red align-items-center shadow">
             <div class="col-1 p-0">
                 <img class="img-fluid" src="/image/cake_PNG13125.png" alt="">
             </div>
@@ -12,7 +12,7 @@
 
         @if(!$bornsToday->isEmpty())
             @foreach ($bornsToday as $oneBornToday)
-                <div class="row p-2">
+                <div class="row p-2 shadow">
                     <a class="text-decoration-none" href="{{route('employees')}}/{{$oneBornToday->id}}">
                         <div class="container">
                             <div class="row">

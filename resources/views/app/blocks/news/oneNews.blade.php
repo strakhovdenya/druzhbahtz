@@ -1,6 +1,6 @@
-<div class="row p-0">
-    <div class="container">
-        <div class="row">
+
+
+        <div class="row m-0">
             <div class="col-4 p-0 pl-1 pr-1">
                 <img class="logo-position-team img-fluid" src="/storage/images/news/{{$oneNews->image}}"
                      alt="main-logo">
@@ -16,8 +16,8 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
+
+
 
 
 

@@ -1,7 +1,7 @@
 @extends('app.layouts.app')
 
 @section('content')
-    <h1 class="container text-center bg-custom-blue text-white">@lang('titles.tournaments')</h1>
+    <h1 class="container text-center bg-custom-blue text-white shadow">@lang('titles.tournaments')</h1>
     <div class="card-deck pt-3">
         <div class="card">
             <img class="card-img-top" src="..." alt="Card image cap">

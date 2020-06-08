@@ -1,7 +1,7 @@
 @extends('app.layouts.app')
 
 @section('content')
-    <h1 class="container text-center bg-custom-blue text-white">
+    <h1 class="container text-center bg-custom-blue text-white shadow">
         @if($isJunior)
             @lang('navigation.is_junior')
         @else

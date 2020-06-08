@@ -1,7 +1,7 @@
 @extends('app.layouts.app')
 
 @section('content')
-    <h1 class="container text-center bg-custom-blue text-white">{{$oneEmployee->name ??'Имя не передано'}}</h1>
+    <h1 class="container text-center bg-custom-blue text-white shadow">{{$oneEmployee->name ??'Имя не передано'}}</h1>
     <nav>
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
             <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"

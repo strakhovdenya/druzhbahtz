@@ -1,6 +1,6 @@
 <div class="container">
-    <h3 class="row bg-custom-blue justify-content-center text-white">@lang('titles.information')</h3>
-    <div class="row p-2">
+    <h3 class="row bg-custom-blue justify-content-center text-white shadow">@lang('titles.information')</h3>
+    <div class="row p-2 shadow">
         ТНа відміну від поширеної думки Lorem Ipsum не є
         випадковим набором літер. Він походить з уривку
         класичної латинської літератури 45 року до н.е.,
