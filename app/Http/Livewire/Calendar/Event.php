@@ -3,6 +3,9 @@
 namespace App\Http\Livewire\Calendar;
 
 use App\Models\CalendarEvents;
+use App\Models\Competitors;
+use App\Models\Employees;
+use App\Models\Teams;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
 use Illuminate\Contracts\Foundation\Application;
@@ -50,7 +53,6 @@ class Event extends Component
      */
     public function subMonth(): void
     {
-
         $monthYearObj = $this->getMonthYearObjectFromSession();
         session(['month_year' => $monthYearObj->subMonthNoOverflow()->format('Y-m')]);
 
@@ -81,7 +83,7 @@ class Event extends Component
 
     private function setMonthEvents($startCurrentPeriod, $endCurrentPeriod)
     {
-        $events = CalendarEvents::where('date_event', '>=', $startCurrentPeriod)->where('date_event', '<=', $endCurrentPeriod)->get();
+        $events = CalendarEvents::where('date_event', '>=', $startCurrentPeriod)->where('date_event', '<=', $endCurrentPeriod)->with('competitor')->get();
         /** @var CalendarEvents $event */
         foreach ($events as $event) {
             $day                                 = (int)Carbon::createFromFormat('Y-m-d H:i:s', $event->date_event)->format('d');

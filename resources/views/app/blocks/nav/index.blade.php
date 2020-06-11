@@ -18,7 +18,7 @@
                     <a class="nav-link menu__link_group menu__link" href="#" id="navbardrop" data-toggle="dropdown">
                         @lang('navigation.training')
                     </a>
-                    <div class="dropdown-menu bg-custom-red nav-shadow">
+                    <div class="dropdown-menu dropdown-menu-nav bg-custom-red nav-shadow">
                         <a class="dropdown-item-nav text-white "
                            href="{{route('schedule',['type'=>'junior'])}}">@lang('navigation.schedule.junior_schedule')</a>
                         <a class="dropdown-item-nav text-white"
@@ -30,7 +30,7 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link menu__link menu__link_group" href="#">@lang('navigation.team')</a>
-                    <div class="dropdown-menu bg-custom-red nav-shadow">
+                    <div class="dropdown-menu dropdown-menu-nav bg-custom-red nav-shadow">
                         <a class="dropdown-item-nav text-white"
                            href="{{route('team')}}">@lang('navigation.team_all')</a>
                         <div class="dropdown-divider"></div>
@@ -44,7 +44,7 @@
                     <a class="nav-link menu__link_group menu__link" href="#" id="navbardrop1" data-toggle="dropdown">
                         @lang('navigation.competition')
                     </a>
-                    <div class="dropdown-menu bg-custom-red nav-shadow">
+                    <div class="dropdown-menu dropdown-menu-nav bg-custom-red nav-shadow">
                         <a class="dropdown-item-nav text-white"
                            href="{{route('clubCup')}}">@lang('navigation.competition_type.club_cup')</a>
                         <a class="dropdown-item-nav text-white"
@@ -58,7 +58,7 @@
                     <a class="nav-link menu__link_group menu__link" href="#" id="navbardrop1" data-toggle="dropdown">
                         @lang('navigation.events')
                     </a>
-                    <div class="dropdown-menu bg-custom-red nav-shadow">
+                    <div class="dropdown-menu dropdown-menu-nav bg-custom-red nav-shadow">
                         <a class="dropdown-item-nav text-white"
                            href="{{route('tournaments')}}">@lang('navigation.events_type.news')</a>
                         <a class="dropdown-item-nav text-white"
@@ -78,7 +78,7 @@
                 <a class="nav-link menu__link_group menu__link" href="#" id="navbardrop" data-toggle="dropdown">
                     @lang('navigation.language')
                 </a>
-                <div class="dropdown-menu bg-custom-red nav-shadow">
+                <div class="dropdown-menu dropdown-menu-nav bg-custom-red nav-shadow">
                     <a class="dropdown-item-nav text-white "
                        href="{{route('setlocale', ['lang' => 'uk'])}}">@lang('navigation.language_type.uk')</a>
                     <a class="dropdown-item-nav text-white"

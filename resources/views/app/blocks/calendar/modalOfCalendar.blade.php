@@ -27,14 +27,18 @@
             <div class="modal-body">
                 <div class="container">
                     <div class="row align-items-center">
-                        <div class="col-4 p-0">
+                        <div class="col-2 p-0">
+                        </div>
+                        <div class="col-3 p-0">
                             <img class="logo-position-team img-fluid" src="/storage/images/teams/logo-color.png" alt="main-logo">
                         </div>
-                        <div class="col-4 p-0">
+                        <div class="col-2 p-0">
                             <img class="logo-position-team img-fluid" src="/storage/images/teams/vs.png" alt="main-logo">
                         </div>
-                        <div class="col-4 p-0">
-                            <img class="logo-position-team img-fluid" src="/storage/images/teams/{{$oneEvent->image_competitor}}" alt="main-logo">
+                        <div class="col-3 p-0">
+                            <img class="logo-position-team img-fluid" src="/storage/images/teams/{{$oneEvent->competitor->image}}" alt="main-logo">
+                        </div>
+                        <div class="col-2 p-0">
                         </div>
                     </div>
 

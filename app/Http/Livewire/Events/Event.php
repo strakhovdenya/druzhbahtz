@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Events;
 
 use App\Models\CalendarEvents;
+use App\Models\Competitors;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
@@ -40,6 +41,10 @@ class Event extends Component
     public $fromUpToDown = '';
     public $fromDownToUp = '';
 
+    public $competitors;
+    public $currentCompetitor = '';
+    public $currentCompetitorId;
+
 
     public $events;
 
@@ -59,10 +64,12 @@ class Event extends Component
      */
     public function mount()
     {
-        $this->all            = 'active';
-        $this->todayAndBeyond = 'active';
-        $this->fromDownToUp   = 'active';
-        $this->ordering       = 'ASC';
+        $this->all               = 'active';
+        $this->todayAndBeyond    = 'active';
+        $this->fromDownToUp      = 'active';
+        $this->ordering          = 'ASC';
+        $this->competitors       = Competitors::all();
+        $this->currentCompetitor = 'Усi';
     }
 
     public function render()
@@ -113,6 +120,24 @@ class Event extends Component
     }
 
     /**
+     * @param $id
+     */
+    public function getCompetitor($id): void
+    {
+        if($id === 0){
+            $this->currentCompetitor = 'Усi';
+            $this->currentCompetitorId = null;
+            return;
+        }
+        $currentCompetitor = $this->competitors->first(static function ($item) use ($id) {
+            return $item->id === $id;
+        });
+
+        $this->currentCompetitor = $currentCompetitor->name;
+        $this->currentCompetitorId = $currentCompetitor->id;
+    }
+
+    /**
      *
      */
     public function getEarlier(): void
@@ -149,7 +174,11 @@ class Event extends Component
             $builder->where('date_event', '<', $this->today->format('Y-m-d'));
         }
 
-        $this->events = $builder->get();
+        if($this->currentCompetitorId !== null){
+            $builder->where('competitor_id', $this->currentCompetitorId);
+        }
+
+        $this->events = $builder->with('competitor')->get();
         if (empty($this->events)) {
             $this->events = collect([]);
         }

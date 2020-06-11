@@ -2,6 +2,7 @@
 
 @section('content')
     <h1 class="container text-center bg-custom-blue text-white shadow">@lang('titles.base_content')</h1>
+
     <p>текст контента Основной контент</p>
     <p>На відміну від поширеної думки Lorem Ipsum не є
         випадковим набором літер. Він походить з уривку

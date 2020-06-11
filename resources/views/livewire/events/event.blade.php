@@ -16,7 +16,7 @@
                             </div>
                             <div class="col-5 p-0">
                                 <img class="logo-position-team img-fluid"
-                                     src="/storage/images/teams/{{$event->image_competitor}}" alt="main-logo">
+                                     src="/storage/images/teams/{{$event->competitor->image}}" alt="main-logo">
                             </div>
                         </div>
                     </div>

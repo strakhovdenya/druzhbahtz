@@ -15,18 +15,19 @@ class CreateCalendarEventsTable extends Migration
     {
         Schema::create('calendar_events', function (Blueprint $table) {
             $table->id();
-            $table->string('title',150);
+            $table->string('title', 150);
             $table->smallInteger('type_event');
             $table->timestamp('date_event');
             $table->timestamp('date_add');
             $table->text('text');
             $table->unsignedBigInteger('user_id');
-            $table->string('image',250)->nullable();
-            $table->string('image_competitor',250)->nullable();
+            $table->string('image', 250)->nullable();
+            $table->unsignedBigInteger('competitor_id');
             $table->timestamps();
             $table->softDeletes();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('competitor_id')->references('id')->on('competitors')->onUpdate('cascade');
 
         });
     }
