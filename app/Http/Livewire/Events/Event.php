@@ -66,7 +66,7 @@ class Event extends Component
     {
         $this->all               = 'active';
         $this->todayAndBeyond    = 'active';
-        $this->fromDownToUp      = 'active';
+        $this->fromUpToDown      = 'active';
         $this->ordering          = 'ASC';
         $this->competitors       = Competitors::all();
         $this->currentCompetitor = 'Усi';
