@@ -30,9 +30,23 @@
     border-color: #2472de !important;
 }
 
-
-
 .border-custom-yellow {
     border-color: #ffff00 !important;
+}
+
+.event-search-competitor{
+    cursor: pointer;
+    border: solid rgba(0,255,255,0);
+}
+
+.event-search-competitor:hover{
+    border: solid aqua;
+    border-radius: 8px;
+    opacity: 0.5;
+    transition-delay: 0.2s;
+}
+
+.search-competitor-button{
+    min-width: 150px;
 }
 

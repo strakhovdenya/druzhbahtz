@@ -1,11 +1,11 @@
 <?php
 return [
-    'information'     => 'ИНФОРМАЦИЯ',
-    'news'            => 'НОВОСТИ',
-    'birthday'        => 'ДЕНЬ РОЖДЕНИЯ',
-    'calendar'        => 'КАЛЕНДАРЬ',
-    'base_content'    => 'Основной контент',
-    'about'           => 'О нас',
+    'information'     => 'ІНФОРМАЦІЯ',
+    'news'            => 'НОВИНИ',
+    'birthday'        => 'ДЕНЬ НАРОДЖЕННЯ',
+    'calendar'        => 'КАЛЕНДАР',
+    'base_content'    => 'ОСНОВНИЙ КОНТЕНТ',
+    'about'           => 'ПРО НАС',
     'set_to_druzhba'  => 'НАБІР до КДЮСШ ХТЗ ХК DRUZHBA',
     'junior_schedule' => 'РОЗКЛАД МОЛОДШI',
     'senior_schedule' => 'РОЗКЛАД СТАРШI',

@@ -28,19 +28,20 @@
 
     <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
         <div class="btn-group" role="group">
-            <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+            <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle search-competitor-button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                 {{$currentCompetitor}}
             </button>
             <div class="dropdown-menu mt-2 shadow" aria-labelledby="btnGroupDrop1" style="width: 200px;">
-                <div wire:click="getCompetitor(0)" class="container p-0">
+                <div wire:click="getCompetitor(0)" class="event-search-competitor container p-0">
                     <div class="row m-0 ">
-                        <h4 class="col-12 pl-1 pr-1 d-flex justify-content-center align-items-center">Усi</h4>
+                        <h4 class="col-12 pl-1 pr-1 mb-0 d-flex justify-content-center align-items-stretch">Усi</h4>
                     </div>
                 </div>
+                <hr class="row mb-1 mt-1 mr-0 ml-0 bg-custom-blue">
                 @foreach($competitors as $competitor)
 
-                    <div wire:click="getCompetitor({{$competitor->id}})" class="container p-0">
+                    <div wire:click="getCompetitor({{$competitor->id}})" class="event-search-competitor container p-0">
                         <div class="row m-0 ">
                             <img class="col-4 pl-3 pr-3 img-fluid " src="/storage/images/teams/{{$competitor->image}}"
                                  alt="">
@@ -48,7 +49,9 @@
                                 class="col-8 pl-1 pr-1 d-flex justify-content-start align-items-center">{{$competitor->name}}</div>
                         </div>
                     </div>
-
+                    @if ($loop->last !== true)
+                        <hr class="row mb-1 mt-1 mr-0 ml-0 bg-custom-blue">
+                    @endif
 
                 @endforeach
             </div>

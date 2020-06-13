@@ -2,14 +2,14 @@
      aria-hidden="true">
     <div class="modal-dialog modal-dialog-custom" role="document">
         <div class="modal-content">
-            <div class="modal-header p-2 pr-3 {{$event[$dayNum]['bg_modal_title']}}">
+            <div class="modal-header p-1 pr-3 {{$event[$dayNum]['bg_modal_title']}}">
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-1 p-0">
                             @if($oneEvent->type_event === 1)
-                                <i class="fas fa-bus-alt fa-4x"></i>
+                                <i class="fas fa-bus-alt fa-3x"></i>
                             @else
-                                <i class="fas fa-home  fa-4x"></i>
+                                <i class="fas fa-home  fa-3x"></i>
                             @endif
                         </div>
                         <div class="col-10 p-0 pl-1">
