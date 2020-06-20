@@ -6,6 +6,7 @@
           content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{{mix('css/app.css')}}">
     <script src="https://kit.fontawesome.com/63531807ce.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.4.0/dist/alpine.min.js" defer></script>
     <livewire:styles>
     <title>Дружба ХТЗ @yield('title')</title>
 </head>

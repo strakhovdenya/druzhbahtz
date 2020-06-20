@@ -69,7 +69,7 @@
                     <a class="nav-link menu__link" href="{{route('coaches')}}">@lang('navigation.contacts')</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link menu__link" href="#">@lang('navigation.fan_club')</a>
+                    <a class="nav-link menu__link" href="{{route('fan_club')}}">@lang('navigation.fan_club')</a>
                 </li>
             </ul>
         </div>
