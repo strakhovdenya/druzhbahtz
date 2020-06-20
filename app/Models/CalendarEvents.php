@@ -6,8 +6,6 @@ use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Carbon;
 
 
@@ -16,33 +14,33 @@ use Illuminate\Support\Carbon;
  *
  * @property int $id
  * @property string $title
- * @property int $type_event
- * @property string $date_event
- * @property string $date_add
- * @property string $text
- * @property int $user_id
- * @property string|null $image
- * @property int $competitor_id
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property string|null $deleted_at
- * @property-read \App\Models\Competitors|null $competitor
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\CalendarEvents newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\CalendarEvents newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\CalendarEvents query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\CalendarEvents whereCompetitorId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\CalendarEvents whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\CalendarEvents whereDateAdd($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\CalendarEvents whereDateEvent($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\CalendarEvents whereDeletedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\CalendarEvents whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\CalendarEvents whereImage($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\CalendarEvents whereText($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\CalendarEvents whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\CalendarEvents whereTypeEvent($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\CalendarEvents whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\CalendarEvents whereUserId($value)
- * @mixin \Eloquent
+ * @property int                             $type_event
+ * @property string                          $date_event
+ * @property string                          $date_add
+ * @property string                          $text
+ * @property int                             $user_id
+ * @property string|null                     $image
+ * @property int                             $competitor_id
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property string|null                     $deleted_at
+ * @property-read Competitors|null           $competitor
+ * @method static Builder|CalendarEvents newModelQuery()
+ * @method static Builder|CalendarEvents newQuery()
+ * @method static Builder|CalendarEvents query()
+ * @method static Builder|CalendarEvents whereCompetitorId($value)
+ * @method static Builder|CalendarEvents whereCreatedAt($value)
+ * @method static Builder|CalendarEvents whereDateAdd($value)
+ * @method static Builder|CalendarEvents whereDateEvent($value)
+ * @method static Builder|CalendarEvents whereDeletedAt($value)
+ * @method static Builder|CalendarEvents whereId($value)
+ * @method static Builder|CalendarEvents whereImage($value)
+ * @method static Builder|CalendarEvents whereText($value)
+ * @method static Builder|CalendarEvents whereTitle($value)
+ * @method static Builder|CalendarEvents whereTypeEvent($value)
+ * @method static Builder|CalendarEvents whereUpdatedAt($value)
+ * @method static Builder|CalendarEvents whereUserId($value)
+ * @mixin Eloquent
  */
 class CalendarEvents extends Model
 {

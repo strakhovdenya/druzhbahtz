@@ -22,6 +22,7 @@ return [
     'gallery'         => 'GALLERY',
     'events'          => 'EVENTS',
     'contacts'        => 'CONTACTS',
+    'coaches'         => 'COACHES',
     'fan_club'        => 'FAN CLUB',
     'soon'            => 'soon',
 ];

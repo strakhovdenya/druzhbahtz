@@ -22,6 +22,7 @@ return [
     'gallery'         => 'ГАЛЕРЕЯ',
     'events'          => 'ПОДІЇ',
     'contacts'        => 'КОНТАКТИ',
+    'coaches'         => 'ТРЕНЕРИ',
     'fan_club'        => 'ФАН-КЛУБ',
     'soon'            => 'скоро',
 ];

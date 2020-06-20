@@ -27,6 +27,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Competitors whereUpdatedAt($value)
  * @mixin \Eloquent
  * @property-read \App\Models\CalendarEvents $calendarEvent
+ * @property-read int|null $calendar_event_count
  */
 class Competitors extends Model
 {

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CoachesController;
 use App\Models\Employees;
 use App\Models\News;
 use Illuminate\Support\Facades\Route;
@@ -61,6 +62,8 @@ Route::group(['prefix' => App\Http\Middleware\LocaleMiddleware::getLocale()], st
     Route::get('/gallery', static function () {
         return view('app.gallery');
     })->name('gallery');
+
+    Route::get('/coaches', [CoachesController::class, 'index'])->name('coaches');
 
     Route::get('setlocale/{lang}', static function ($lang) {
 
