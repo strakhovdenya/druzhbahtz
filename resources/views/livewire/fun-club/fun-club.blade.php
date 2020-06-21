@@ -51,13 +51,15 @@
             isLoading: false,
             add(id) {
                 this.count += 1
-                let currItem = this._getCurrentItem(id)
-                if (currItem.hasOwnProperty('countInCart')) {
-                    currItem.countInCart += 1
+                let curtCurrItem = this._getCurrentItemInCart(id)
+                if (curtCurrItem) {
+                    curtCurrItem.countInCart += 1
                     return;
                 }
-                currItem.countInCart = 1
-                this.curt.push(currItem)
+                let currItem = this._getCurrentItem(id)
+                let copyCurrItem = Object.assign({}, currItem);
+                copyCurrItem.countInCart = 1
+                this.curt.push(copyCurrItem)
             },
             sub(id) {
                 let currItem = this._getCurrentItemInCart(id)
@@ -75,45 +77,53 @@
                     })
                     this.count -= 1
                 }
-            },
+            }
+            ,
             getCountTotal() {
                 return this.count
-            },
+            }
+            ,
             getTotalOrderSum() {
                 return this.curt.reduce(function (sum, item) {
                     return sum + item.countInCart * item.price;
                 }, 0.0) + "грн"
-            },
+            }
+            ,
             getTotalOrderQuantity() {
                 return this.curt.reduce(function (quan, item) {
                     return quan + item.countInCart;
                 }, 0) + "шт"
-            },
+            }
+            ,
             getItemSumInCart(id) {
                 const currItem = this._getCurrentItemInCart(id)
                 return currItem.price * currItem.countInCart + "грн"
-            },
+            }
+            ,
             getItemPrice(id) {
                 const currItem = this._getCurrentItem(id)
                 if (!currItem) {
                     return "0.0 грн";
                 }
                 return currItem.price + "грн"
-            },
+            }
+            ,
             _getCurrentItemInCart(id) {
                 return this.curt.find(function (item) {
                     if (item.id === id) {
                         return true;
                     }
                 });
-            },
+            }
+            ,
             _getCurrentItem(id) {
                 return this.funClubItems.find(function (item) {
                     if (item.id === id) {
                         return true;
                     }
                 });
-            },
+            }
+            ,
             fetchItems() {
                 this.isLoading = true;
                 fetch(`api/fun_club_items/all`)
