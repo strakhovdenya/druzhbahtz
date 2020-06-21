@@ -6,36 +6,7 @@
                         class="fas fa-shopping-cart"></i> (<span
                         x-text="getCountTotal()"></span>)
                 </button>
-                <div class="modal fade" id="cartModalLong" tabindex="-1" role="dialog"
-                     aria-labelledby="cartModalLongTitle" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="cartModalLongTitle">Modal title</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <h4 x-show="curt.length === 0">ничего!!!</h4>
-                                <template x-for="itemInCurt in curt" :key="itemInCurt.id">
-                                    <div class="row">
-                                        <div class="container">
-                                            <div class="row">
-                                                <h4 x-text="itemInCurt.name" class="col-10"></h4>
-                                                <h4 x-text="itemInCurt.countInCart" class="col-2"></h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </template>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @include('livewire.fun-club.order-modal')
             </div>
         </div>
         <div class="row pb-5 mb-4 ">
@@ -52,9 +23,11 @@
                             <h5 class="text-center"><span x-text="item.name"></span></h5>
                             <p class="small text-muted font-italic" x-text="item.description"></p>
                             <h5 class="text-center"><span x-text="getItemPrice(item.id)"></span></h5>
-                            <button class="btn bg-custom-yellow" @click="sub(item.id)"><i
-                                    class="far fa-minus-square"></i></button>
-                            <button class="btn bg-custom-blue" @click="add(item.id)"><i class="far fa-plus-square"></i>
+                            <button class="btn bg-custom-yellow" @click="sub(item.id)">
+                                <i class="far fa-minus-square"></i>
+                            </button>
+                            <button class="btn bg-custom-blue" @click="add(item.id)">
+                                <i class="far fa-plus-square"></i>
                             </button>
 
                         </div>
@@ -87,10 +60,38 @@
                 this.curt.push(currItem)
             },
             sub(id) {
-                this.count -= 1
+                let currItem = this._getCurrentItemInCart(id)
+                if (currItem === undefined) {
+                    return;
+                }
+                if (currItem.countInCart > 1) {
+                    currItem.countInCart -= 1
+                    this.count -= 1
+                    return;
+                }
+                if (currItem.countInCart === 1) {
+                    this.curt = this.curt.filter(function (elem) {
+                        return elem.id !== currItem.id
+                    })
+                    this.count -= 1
+                }
             },
             getCountTotal() {
                 return this.count
+            },
+            getTotalOrderSum() {
+                return this.curt.reduce(function (sum, item) {
+                    return sum + item.countInCart * item.price;
+                }, 0.0) + "грн"
+            },
+            getTotalOrderQuantity() {
+                return this.curt.reduce(function (quan, item) {
+                    return quan + item.countInCart;
+                }, 0) + "шт"
+            },
+            getItemSumInCart(id) {
+                const currItem = this._getCurrentItemInCart(id)
+                return currItem.price * currItem.countInCart + "грн"
             },
             getItemPrice(id) {
                 const currItem = this._getCurrentItem(id)
@@ -98,6 +99,13 @@
                     return "0.0 грн";
                 }
                 return currItem.price + "грн"
+            },
+            _getCurrentItemInCart(id) {
+                return this.curt.find(function (item) {
+                    if (item.id === id) {
+                        return true;
+                    }
+                });
             },
             _getCurrentItem(id) {
                 return this.funClubItems.find(function (item) {

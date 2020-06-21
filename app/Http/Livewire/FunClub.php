@@ -18,6 +18,6 @@ class FunClub extends Component
     public function render()
     {
 
-        return view('livewire.fun-club');
+        return view('livewire.fun-club.fun-club');
     }
 }
