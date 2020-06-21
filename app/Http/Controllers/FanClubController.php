@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Coaches;
+use App\Models\FunClubItems;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\View\View;
@@ -16,8 +17,16 @@ class FanClubController extends Controller
      */
     public function index()
     {
-
-
         return view('app.funClub');
+    }
+
+    public function getAll()
+    {
+        try {
+            $funClubItems = FunClubItems::all();
+        } catch (Throwable $e) {
+            $funClubItems = collect([]);
+        }
+        return  response()->json($funClubItems->toArray(),200);
     }
 }

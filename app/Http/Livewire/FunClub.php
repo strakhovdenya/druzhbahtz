@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Coaches;
+use App\Models\FunClubItems;
 use Livewire\Component;
 
 class FunClub extends Component
@@ -16,11 +17,7 @@ class FunClub extends Component
     }
     public function render()
     {
-        try {
-            $coaches = Coaches::all();
-        } catch (Throwable $e) {
-            $coaches = collect([]);
-        }
-        return view('livewire.fun-club',['coaches' => $coaches]);
+
+        return view('livewire.fun-club');
     }
 }
