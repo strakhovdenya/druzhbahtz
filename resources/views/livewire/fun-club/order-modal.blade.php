@@ -17,7 +17,7 @@
                                 <h4 x-text="itemInCurt.name" class="col-6"></h4>
                                 <h5 x-text="itemInCurt.countInCart" class="col-2"></h5>
                                 <h5 x-text="getItemSumInCart(itemInCurt.id)" class="col-2"></h5>
-                                <div @click="sub(itemInCurt.id)" class="col-1"><a href="#"><i class="text-warning far fa-minus-square"></i></a></div>
+                                <div @click="sub(itemInCurt.id)" class="col-1"><a href="#"><i class="text-danger far fa-minus-square"></i></a></div>
                                 <div @click="add(itemInCurt.id)" class="col-1"><a href="#"><i class="text-info far fa-plus-square"></i></a></div>
                             </div>
                         </div>
@@ -35,7 +35,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
-                <button type="button" class="btn btn-primary">Отправить заказ</button>
+                <button @click="saveCurt()" type="button" class="btn btn-primary" data-dismiss="modal">Отправить заказ</button>
             </div>
         </div>
     </div>
