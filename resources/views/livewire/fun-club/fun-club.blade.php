@@ -62,6 +62,11 @@
             curt: [],
             isLoading: false,
             messages: false,
+            phone: '',
+            errors: {
+                phone: ['Заполните номер (11 цифр минимум)'],
+            },
+            showAlertMessage: true,
             add(id) {
                 this.messages = false
                 this.count += 1
@@ -97,13 +102,12 @@
                 const item = this._getCurrentItemInCart(id)
                 return item === undefined
             },
-            isEmptyCurt() {
-                return this.curt.length === 0
+            checkDisabling() {
+                return (this.curt.length === 0) || (this.showAlertMessage === true)
             },
             getCountTotal() {
                 return this.count
-            }
-            ,
+            },
             getTotalOrderSum() {
                 return this.curt.reduce(function (sum, item) {
                     return sum + item.countInCart * item.price;
@@ -157,8 +161,18 @@
                             return item;
                         });
                     });
-            }
-            ,
+            },
+            checkPhone() {
+                if (this.phone.length < 11) {
+                    this.errors = {
+                        phone: ['Заполните номер (11 цифр минимум)'],
+                    }
+                    this.showAlertMessage = true;
+                } else {
+                    this.showAlertMessage = false;
+                    this.errors = []
+                }
+            },
             saveCurt() {
                 this.isLoading = true;
                 fetch(`api/fun_club_items/save`, {
@@ -166,7 +180,7 @@
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify(this.curt)
+                    body: JSON.stringify({'curt': this.curt, 'phone': this.phone})
                 })
                     .then(res => res.json())
                     .then(data => {
