@@ -31,7 +31,11 @@
                             </div>
                             <div class="w-100 h-auto d-inline-block mt-auto text-center d-flex justify-content-around">
                                 <h6 class="text-center"><span x-text="getItemPrice(item.id)"></span></h6>
-                                <button class="btn bg-danger btn-sm" @click="sub(item.id)">
+                                <button
+                                    class="btn bg-danger btn-sm"
+                                    @click="sub(item.id)"
+                                    :disabled="isNotInCurt(item.id)"
+                                >
                                     <i class="far fa-minus-square"></i>
                                 </button>
                                 <button class="btn bg-primary btn-sm" @click="add(item.id)">
@@ -89,44 +93,58 @@
                     this.count -= 1
                 }
             },
+            isNotInCurt(id) {
+                const item = this._getCurrentItemInCart(id)
+                return item === undefined
+            },
+            isEmptyCurt() {
+                return this.curt.length === 0
+            },
             getCountTotal() {
                 return this.count
-            },
+            }
+            ,
             getTotalOrderSum() {
                 return this.curt.reduce(function (sum, item) {
                     return sum + item.countInCart * item.price;
                 }, 0.0) + "грн"
-            },
+            }
+            ,
             getTotalOrderQuantity() {
                 return this.curt.reduce(function (quan, item) {
                     return quan + item.countInCart;
                 }, 0) + "шт"
-            },
+            }
+            ,
             getItemSumInCart(id) {
                 const currItem = this._getCurrentItemInCart(id)
                 return currItem.price * currItem.countInCart + "грн"
-            },
+            }
+            ,
             getItemPrice(id) {
                 const currItem = this._getCurrentItem(id)
                 if (!currItem) {
                     return "0.0 грн";
                 }
                 return currItem.price + "грн"
-            },
+            }
+            ,
             _getCurrentItemInCart(id) {
                 return this.curt.find(function (item) {
                     if (item.id === id) {
                         return true;
                     }
                 });
-            },
+            }
+            ,
             _getCurrentItem(id) {
                 return this.funClubItems.find(function (item) {
                     if (item.id === id) {
                         return true;
                     }
                 });
-            },
+            }
+            ,
             fetchItems() {
                 this.isLoading = true;
                 fetch(`api/fun_club_items/all`)
@@ -139,7 +157,8 @@
                             return item;
                         });
                     });
-            },
+            }
+            ,
             saveCurt() {
                 this.isLoading = true;
                 fetch(`api/fun_club_items/save`, {

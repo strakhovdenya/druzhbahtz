@@ -35,7 +35,15 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
-                <button @click="saveCurt()" type="button" class="btn btn-primary" data-dismiss="modal">Отправить заказ</button>
+                <button
+                    @click="saveCurt()"
+                    type="button"
+                    class="btn btn-primary"
+                    data-dismiss="modal"
+                    :disabled="isEmptyCurt()"
+                >
+                    Отправить заказ
+                </button>
             </div>
         </div>
     </div>
