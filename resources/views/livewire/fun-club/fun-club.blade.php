@@ -17,7 +17,7 @@
         <div class="row pb-5 mb-4 ">
             <template x-for="item in funClubItems" :key="item.id">
 
-                <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 mx-auto">
+                <div class="col-lg-3 col-md-6 mb-4 mx-auto">
                     <!-- Card-->
                     <div class="card rounded shadow border-0 h-100">
                         <div class="card-body p-1 d-flex align-items-end flex-column">

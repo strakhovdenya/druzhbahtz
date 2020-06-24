@@ -19,6 +19,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/fun_club_items/all',[FanClubController::class, 'getAll']);
-Route::post('/fun_club_items/save',[FanClubController::class, 'saveAll']);
+Route::get('/fun_club_items/all', [FanClubController::class, 'getAll']);
+
+Route::post('/fun_club_items/save', [FanClubController::class, 'saveAll']);
+
+
 

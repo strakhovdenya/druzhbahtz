@@ -42,6 +42,7 @@ class FanClubController extends Controller
      */
     public function saveAll(Request $request)
     {
+        dd($request);
         return  response()->json(['messages'=>'Успешно сохранено'],200);
     }
 }
