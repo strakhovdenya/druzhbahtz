@@ -33,6 +33,12 @@ use Illuminate\Support\Carbon;
  */
 class Order_items extends Model
 {
+
+    /**
+     * @var string
+     */
+    protected $fillable = ['fun_club_item_id'];
+
     /**
      * @return HasOne
      */

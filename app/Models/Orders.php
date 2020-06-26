@@ -32,10 +32,14 @@ use Illuminate\Support\Carbon;
 class Orders extends Model
 {
     /**
+     * @var string
+     */
+    protected $fillable = ['phone'];
+    /**
      * @return HasMany
      */
     public function orderItems(): HasMany
     {
-        return $this->hasMany(Order_items::class);
+        return $this->hasMany(Order_items::class,'order_id');
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Coaches;
 use App\Models\FunClubItems;
+use App\Models\Orders;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\JsonResponse;
@@ -42,7 +43,17 @@ class FanClubController extends Controller
      */
     public function saveAll(Request $request)
     {
-        dd($request);
+        $curt = $request->only(['curt']);
+        $phone = $request->only(['phone']);
+
+        /** @var Orders $order */
+        $order = Orders::create($phone);
+        $curtToCreate = [];
+        foreach ($curt['curt'] as $item){
+            $curtToCreate[] = ['fun_club_item_id'=>$item['id']];
+        }
+
+        $order->orderItems()->createMany($curtToCreate);
         return  response()->json(['messages'=>'Успешно сохранено'],200);
     }
 }
