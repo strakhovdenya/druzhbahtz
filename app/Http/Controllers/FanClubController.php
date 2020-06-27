@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Coaches;
 use App\Models\FunClubItems;
 use App\Models\Orders;
+use Carbon\Carbon;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\JsonResponse;
@@ -33,7 +34,8 @@ class FanClubController extends Controller
         } catch (Throwable $e) {
             $funClubItems = collect([]);
         }
-        return  response()->json($funClubItems->toArray(),200);
+
+        return response()->json($funClubItems->toArray(), 200);
     }
 
     /**
@@ -43,17 +45,35 @@ class FanClubController extends Controller
      */
     public function saveAll(Request $request)
     {
-        $curt = $request->only(['curt']);
-        $phone = $request->only(['phone']);
+        $curt    = $request->only(['curt']);
+        $phone   = $request->only(['phone']);
+        $hash    = $request->ip() . '|' . $request->server('HTTP_USER_AGENT');
+        $diffSec = 1000;
 
+        /** @var Orders $oldOrder */
+        $oldOrders = Orders::where('unique_hash', $hash)->first('updated_at')->get();
+        if ($oldOrders->isNotEmpty()) {
+            $now     = Carbon::now();
+            $diffSec = $now->diffInSeconds($oldOrders->last()->updated_at);
+        }
+
+        if ($diffSec < 60) {
+            return response()->json(['messages' => 'Сохранять заказы можно не чаще одного раза в минуту', 'error' => true], 400);
+        }
+
+        $phone['unique_hash'] = $hash;
         /** @var Orders $order */
-        $order = Orders::create($phone);
+        $order        = Orders::create($phone);
         $curtToCreate = [];
-        foreach ($curt['curt'] as $item){
-            $curtToCreate[] = ['fun_club_item_id'=>$item['id']];
+        foreach ($curt['curt'] as $item) {
+            $curtToCreate[] = [
+                'fun_club_item_id' => $item['id'],
+                'count'            => $item['countInCart'],
+            ];
         }
 
         $order->orderItems()->createMany($curtToCreate);
-        return  response()->json(['messages'=>'Успешно сохранено'],200);
+
+        return response()->json(['messages' => 'Успешно сохранено','error' => false], 200);
     }
 }

@@ -16,6 +16,7 @@ class CreateOrderItemsTable extends Migration
         Schema::create('order_items', static function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('order_id');
+            $table->integer('count');
             $table->unsignedBigInteger('fun_club_item_id');
             $table->timestamps();
             $table->softDeletes();

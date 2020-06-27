@@ -34,7 +34,9 @@ class Orders extends Model
     /**
      * @var string
      */
-    protected $fillable = ['phone'];
+    protected $fillable = ['phone','unique_hash'];
+
+    protected $dates = ['created_at', 'updated_at', 'deleted_at'];
     /**
      * @return HasMany
      */

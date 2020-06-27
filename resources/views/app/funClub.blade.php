@@ -4,7 +4,17 @@
     <h1 class="container text-center bg-custom-blue text-white shadow">@lang('titles.fan_club')</h1>
     <div class="container">
         <div x-data="getItems()" x-init="fetchItems()">
-            <div x-show="messages" x-text="messages" class="alert alert-info text-center" role="alert">
+            <div
+                x-show="messages&&!error"
+                x-text="messages"
+                class="alert alert-info  text-center"
+                role="alert">
+            </div>
+            <div
+                x-show="messages&&error"
+                x-text="messages"
+                class="alert alert-danger  text-center"
+                role="alert">
             </div>
 
             <div x-show="!isLoading">
@@ -32,9 +42,11 @@
                                             alt=""
                                             class="img-fluid d-block mx-auto mb-3">
                                         <h5 class="text-center"><span x-text="item.name"></span></h5>
-                                        <p class="small text-muted font-italic text-center" x-text="item.description"></p>
+                                        <p class="small text-muted font-italic text-center"
+                                           x-text="item.description"></p>
                                     </div>
-                                    <div class="w-100 h-auto d-inline-block mt-auto text-center d-flex justify-content-around">
+                                    <div
+                                        class="w-100 h-auto d-inline-block mt-auto text-center d-flex justify-content-around">
                                         <h6 class="text-center"><span x-text="getItemPrice(item.id)"></span></h6>
                                         <button
                                             class="btn bg-danger btn-sm"
@@ -68,6 +80,7 @@
                     isLoading: false,
                     messages: false,
                     phone: '',
+                    error: false,
                     errors: {
                         phone: ['Заполните номер (11 цифр минимум)'],
                     },
@@ -187,12 +200,17 @@
                             },
                             body: JSON.stringify({'curt': this.curt, 'phone': this.phone})
                         })
-                            .then(res => res.json())
+                            .then(res => {
+                                return res.json()
+                            })
                             .then(data => {
+                                this.error = data.error;
                                 this.isLoading = false;
                                 this.messages = data.messages;
-                                this.curt = []
-                                this.count = 0
+                                if (this.error === false) {
+                                    this.curt = []
+                                    this.count = 0
+                                }
                             })
                             .catch((error) => {
                                 console.error('Error:', error);

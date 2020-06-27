@@ -37,7 +37,7 @@ class Order_items extends Model
     /**
      * @var string
      */
-    protected $fillable = ['fun_club_item_id'];
+    protected $fillable = ['fun_club_item_id','count'];
 
     /**
      * @return HasOne

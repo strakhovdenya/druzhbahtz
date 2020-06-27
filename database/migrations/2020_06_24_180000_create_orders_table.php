@@ -16,6 +16,7 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', static function (Blueprint $table) {
             $table->id();
             $table->string('phone', 150);
+            $table->string('unique_hash', 150);
             $table->timestamps();
             $table->softDeletes();
         });
