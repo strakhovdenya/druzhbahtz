@@ -51,8 +51,9 @@ class FanClubController extends Controller
         $diffSec = 1000;
 
         /** @var Orders $oldOrder */
-        $oldOrders = Orders::where('unique_hash', $hash)->first('updated_at')->get();
-        if ($oldOrders->isNotEmpty()) {
+        $oldOrders = Orders::where('unique_hash', $hash)->get();
+
+        if ($oldOrders !== null && $oldOrders->isNotEmpty()) {
             $now     = Carbon::now();
             $diffSec = $now->diffInSeconds($oldOrders->last()->updated_at);
         }
