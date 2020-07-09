@@ -8,11 +8,15 @@ use App\Repositories\FunClubRepository;
 use App\Repositories\Interfaces\CoachesRepositoryInterface;
 use App\Repositories\Interfaces\EmployeeRepositoryInterface;
 use App\Repositories\Interfaces\FunClubRepositoryInterface;
+use App\Repositories\Interfaces\NewsRepositoryInterface;
 use App\Repositories\Interfaces\OrderRepositoryInterface;
 use App\Repositories\Interfaces\PeriodsRepositoryInterface;
+use App\Repositories\Interfaces\TeamRepositoryInterface;
 use App\Repositories\Interfaces\TrainingSchedulesRepositoryInterface;
+use App\Repositories\NewsRepository;
 use App\Repositories\OrderRepository;
 use App\Repositories\PeriodsRepository;
+use App\Repositories\TeamRepository;
 use App\Repositories\TrainingSchedulesRepository;
 use Illuminate\Support\ServiceProvider;
 
@@ -36,6 +40,10 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(TrainingSchedulesRepositoryInterface::class, TrainingSchedulesRepository::class);
 
         $this->app->bind(CoachesRepositoryInterface::class, CoachesRepository::class);
+
+        $this->app->bind(NewsRepositoryInterface::class, NewsRepository::class);
+
+        $this->app->bind(TeamRepositoryInterface::class, TeamRepository::class);
     }
 
     /**

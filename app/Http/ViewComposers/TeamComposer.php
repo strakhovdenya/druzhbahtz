@@ -1,15 +1,9 @@
 <?php
 
-
 namespace App\Http\ViewComposers;
 
-
-use App\Models\Employees;
-use App\Models\Teams;
-use Carbon\Carbon;
+use App\Repositories\TeamRepository;
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\Collection;
-use Throwable;
 
 class TeamComposer
 {
@@ -18,11 +12,8 @@ class TeamComposer
      */
     public function compose(View $view)
     {
-        try {
-            $teams = Teams::all();
-        } catch (Throwable $e) {
-            $teams  = [];
-        }
+        $teamsRepository = new TeamRepository();
+        $teams           = $teamsRepository->getAll();
 
         $view->with('teams', $teams);
     }

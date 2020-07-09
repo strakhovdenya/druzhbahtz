@@ -1,12 +1,9 @@
 <?php
 
-
 namespace App\Http\ViewComposers;
 
-
-use App\Models\News;
+use App\Repositories\NewsRepository;
 use Illuminate\Contracts\View\View;
-use Throwable;
 
 class NewsComposer
 {
@@ -15,11 +12,8 @@ class NewsComposer
      */
     public function compose(View $view)
     {
-        try {
-            $news = News::orderBy('date_event', 'desc')->take(5)->get();
-        } catch (Throwable $e) {
-            $news = [];
-        }
+        $newsRepository = new NewsRepository();
+        $news           = $newsRepository->getNews(5);
         $view->with('news', $news);
     }
 }
