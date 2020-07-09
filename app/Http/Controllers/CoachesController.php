@@ -2,26 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Coaches;
+use App\Repositories\Interfaces\CoachesRepositoryInterface;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\View\View;
-use Throwable;
 
 
 class CoachesController extends Controller
 {
     /**
+     * @param CoachesRepositoryInterface $coachesRepository
+     *
      * @return Application|Factory|View
      */
-    public function index()
+    public function index(CoachesRepositoryInterface $coachesRepository)
     {
-        try {
-            $coaches = Coaches::all();
-        } catch (Throwable $e) {
-            $coaches = collect([]);
-        }
+        $coaches = $coachesRepository->getAll();
 
-        return view('app.coaches',['coaches' => $coaches]);
+        return view('app.coaches', compact('coaches'));
     }
 }

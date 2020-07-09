@@ -2,7 +2,9 @@
 
 namespace App\Repositories\Interfaces;
 
-interface PeriodsRepositoryInterface
+use App\Models\Periods;
+
+interface TrainingSchedulesRepositoryInterface
 {
-    public function getPeriodByNowDate();
+    public function getScheduleByPeriodAndType(Periods $period, bool $isJunior);
 }

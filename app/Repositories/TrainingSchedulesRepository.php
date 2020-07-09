@@ -3,18 +3,21 @@
 namespace App\Repositories;
 
 use App\Models\Periods;
-use App\Repositories\Interfaces\PeriodsRepositoryInterface;
-use Carbon\Carbon;
+use App\Models\TrainingSchedules;
+use App\Repositories\Interfaces\TrainingSchedulesRepositoryInterface;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Collection;
 
-class PeriodsRepository implements PeriodsRepositoryInterface
+class TrainingSchedulesRepository implements TrainingSchedulesRepositoryInterface
 {
     /**
-     * @return Builder|Model
+     * @param Periods $period
+     * @param bool    $isJunior
+     *
+     * @return Builder[]|Collection
      */
-    public function getPeriodByNowDate()
+    public function getScheduleByPeriodAndType(Periods $period, bool $isJunior)
     {
-        return Periods::where('name', Carbon::now()->startOfMonth())->firstOrFail();
+        return TrainingSchedules::where('period_id', $period->id)->where('is_junior', '=', $isJunior)->get();
     }
 }

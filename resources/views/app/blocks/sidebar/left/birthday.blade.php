@@ -1,4 +1,4 @@
-@if(!$bornsToday->isEmpty()|| !$borns->isEmpty())
+@if(!$bornsToday->isEmpty()|| !$bornsSoon->isEmpty())
     <div class="container">
         <h3 class="row bg-custom-red align-items-center shadow">
             <div class="col-1 p-0">
@@ -33,14 +33,14 @@
                 </div>
             @endforeach
         @endif
-        @if(!$borns->isEmpty())
+        @if(!$bornsSoon->isEmpty())
 
             <div class="row p-2">
                 <div class="col">
                     <h4 class="text-center text-primary">. . . @lang('titles.soon')</h4>
                 </div>
             </div>
-            @foreach ($borns as $oneBorn)
+            @foreach ($bornsSoon as $oneBorn)
                 <div class="row p-2">
                     <a class="text-decoration-none" href="{{route('employees')}}/{{$oneBorn->id}}">
                         <div class="container">
@@ -52,12 +52,8 @@
                                 </div>
                                 <div class="col-10 p-0">
                                     <div class="h-100 d-flex flex-column  justify-content-start">
-
                                         <h6 class=" mb-auto">{{$oneBorn->name}}</h6>
-
-
-                                        <h6 class="small date mb-1">{{$oneBorn->born}}</h6>
-
+                                        <h6 class="small date mb-1">{{$oneBorn->bornFormated}}</h6>
                                     </div>
                                 </div>
                             </div>

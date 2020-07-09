@@ -1,10 +1,10 @@
 <?php
 
-
 namespace App\Repositories\Interfaces;
 
+use App\Models\Periods;
 
-interface OrderRepositoryInterface
+interface PeriodsRepositoryInterface
 {
-    public function getDiffSecondForLastUniqueOrder($hash): int;
+    public function getPeriodByNowDate();
 }

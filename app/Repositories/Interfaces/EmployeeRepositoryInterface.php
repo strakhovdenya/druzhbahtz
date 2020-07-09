@@ -4,7 +4,13 @@
 namespace App\Repositories\Interfaces;
 
 
-interface OrderRepositoryInterface
+interface EmployeeRepositoryInterface
 {
-    public function getDiffSecondForLastUniqueOrder($hash): int;
+    public function showByTeamId($id);
+
+    public function getAll();
+
+    public function getBornTodayCollection();
+
+    public function getBornSoonCollection();
 }

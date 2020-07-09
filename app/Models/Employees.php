@@ -59,4 +59,6 @@ class Employees extends Model
     {
         return $this->belongsTo(Teams::class);
     }
+
+    protected $dates = ['created_at', 'updated_at', 'deleted_at', 'born'];
 }

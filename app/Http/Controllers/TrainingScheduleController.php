@@ -4,23 +4,31 @@ namespace App\Http\Controllers;
 
 use App\Models\Periods;
 use App\Models\TrainingSchedules;
+use App\Repositories\Interfaces\PeriodsRepositoryInterface;
+use App\Repositories\TrainingSchedulesRepository;
 use Carbon\Carbon;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\View\View;
 
 class TrainingScheduleController extends Controller
 {
     /**
-     * @param Request $request
+     * @param                             $type
+     * @param PeriodsRepositoryInterface  $periodsRepository
+     * @param TrainingSchedulesRepository $schedulesRepository
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Application|Factory|View
      */
-    public function index($type)
+    public function index($type, PeriodsRepositoryInterface $periodsRepository, TrainingSchedulesRepository $schedulesRepository)
     {
-        $period = Periods::where('name', Carbon::now()->startOfMonth())->firstOrFail();
+        $period = $periodsRepository->getPeriodByNowDate();
 
         $isJunior = $type === 'junior';
 
-        $schedule = TrainingSchedules::where('period_id', $period->id)->where('is_junior', '=', $isJunior)->get();
+        $schedule = $schedulesRepository->getScheduleByPeriodAndType($period, $isJunior);
 
         return view('app.schedule', compact('schedule', 'isJunior'));
     }
@@ -28,7 +36,7 @@ class TrainingScheduleController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
@@ -38,9 +46,9 @@ class TrainingScheduleController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function store(Request $request)
     {
@@ -52,7 +60,7 @@ class TrainingScheduleController extends Controller
      *
      * @param int $id
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function show($id)
     {
@@ -64,7 +72,7 @@ class TrainingScheduleController extends Controller
      *
      * @param int $id
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function edit($id)
     {
@@ -74,10 +82,10 @@ class TrainingScheduleController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param int                      $id
+     * @param Request $request
+     * @param int     $id
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(Request $request, $id)
     {
@@ -89,7 +97,7 @@ class TrainingScheduleController extends Controller
      *
      * @param int $id
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy($id)
     {

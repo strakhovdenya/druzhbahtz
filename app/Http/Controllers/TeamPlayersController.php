@@ -2,33 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Employees;
+use App\Repositories\Interfaces\EmployeeRepositoryInterface;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Support\Collection;
-use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\View\View;
-use Throwable;
-use function in_array;
 
 class TeamPlayersController extends Controller
 {
     /**
+     * @param EmployeeRepositoryInterface $employeeRepository
+     *
      * @return Application|Factory|View
      */
-    public function index()
+    public function index(EmployeeRepositoryInterface $employeeRepository)
     {
-        try {
-            $teamBase = Employees::with('team')->get();
-            $team     = $this->groupByPosition($teamBase);
+        $team = $employeeRepository->getAll();
 
-        } catch (Throwable $e) {
-            $team = collect([]);
-        }
-
-        return view('app.team', ['team' => $team]);
+        return view('app.team', compact('team'));
     }
 
     /**
@@ -54,51 +46,16 @@ class TeamPlayersController extends Controller
     }
 
     /**
-     * @param $id
+     * @param                             $id
+     * @param EmployeeRepositoryInterface $employeeRepository
      *
      * @return Application|Factory|View
      */
-    public function show($id)
+    public function show($id, EmployeeRepositoryInterface $employeeRepository)
     {
-        try {
-            $teamBase = Employees::whereHas('team', static function ($team) use ($id) {
-                $team->where('id', '=', $id);
-            })->get();
+        $team = $employeeRepository->showByTeamId($id);
 
-            $team     = $this->groupByPosition($teamBase);
-
-        } catch (Throwable $e) {
-            $team = collect([]);
-        }
-
-        return view('app.team', ['team' => $team]);
-    }
-
-    /**
-     * @param EloquentCollection $teamBase
-     *
-     * @return Collection
-     */
-    private function groupByPosition(EloquentCollection $teamBase): Collection
-    {
-        if ($teamBase->count() === 0) {
-            return collect([]);
-        }
-        $playerTypes = [];
-        foreach ($teamBase as $onePlayer) {
-            if (in_array($onePlayer->position, $playerTypes, true) === false) {
-                $playerTypes[] = $onePlayer->position;
-            }
-        }
-        $teamByTypeArr = [];
-        foreach ($playerTypes as $oneType) {
-            $teamByTypeArr[] = $teamBase->filter(static function ($item) use ($oneType) {
-                return $item->position === $oneType;
-            });
-        }
-
-        return collect($teamByTypeArr);
-
+        return view('app.team', compact('team'));
     }
 
     /**

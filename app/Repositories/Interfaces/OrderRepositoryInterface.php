@@ -4,7 +4,7 @@
 namespace App\Repositories\Interfaces;
 
 
-interface FunClubRepositoryInterface
+interface OrderRepositoryInterface
 {
-    public function all();
+    public function getDiffSecondForLastUniqueOrder($hash): int;
 }
