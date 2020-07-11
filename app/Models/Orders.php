@@ -28,6 +28,8 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Orders wherePhone($value)
  * @method static Builder|Orders whereUpdatedAt($value)
  * @mixin Eloquent
+ * @property string $unique_hash
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Orders whereUniqueHash($value)
  */
 class Orders extends Model
 {

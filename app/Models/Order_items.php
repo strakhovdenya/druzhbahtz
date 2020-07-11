@@ -30,6 +30,8 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Order_items whereOrderId($value)
  * @method static Builder|Order_items whereUpdatedAt($value)
  * @mixin Eloquent
+ * @property int $count
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Order_items whereCount($value)
  */
 class Order_items extends Model
 {

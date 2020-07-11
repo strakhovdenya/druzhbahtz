@@ -22,5 +22,6 @@ class DatabaseSeeder extends Seeder
          $this->call(CoachesSeeder::class);
          $this->call(FunClubItemsSeeder::class);
          $this->call(GalleryHeadsSeeder ::class);
+         $this->call(GalleryItemsSeeder ::class);
     }
 }
