@@ -23,8 +23,8 @@
                         <button class="btn btn-light shadow" data-toggle="modal" data-target="#cartModalLong">Корзина
                             <i class="fas fa-shopping-cart"></i>
                             <span x-show="getCountTotal() !== 0">
-                        (<span x-text="getCountTotal()"></span>)
-                    </span>
+                                 (<span x-text="getCountTotal()"></span>)
+                            </span>
                         </button>
                         @include('app.blocks.fun-club.order-modal')
                     </div>
@@ -71,156 +71,155 @@
                 </div>
             </div>
         </div>
-        <script>
-            function getItems() {
-                return {
-                    count: 0,
-                    funClubItems: [],
-                    curt: [],
-                    isLoading: false,
-                    messages: false,
-                    phone: '',
-                    error: false,
-                    errors: {
-                        phone: ['Заполните номер (11 цифр минимум)'],
-                    },
-                    showAlertMessage: true,
-                    add(id) {
-                        this.messages = false
-                        this.count += 1
-                        let curtCurrItem = this._getCurrentItemInCart(id)
-                        if (curtCurrItem) {
-                            curtCurrItem.countInCart += 1
-                            return;
-                        }
-                        let currItem = this._getCurrentItem(id)
-                        let copyCurrItem = Object.assign({}, currItem);
-                        copyCurrItem.countInCart = 1
-                        this.curt.push(copyCurrItem)
-                    },
-                    sub(id) {
-                        this.messages = false
-                        let currItem = this._getCurrentItemInCart(id)
-                        if (currItem === undefined) {
-                            return;
-                        }
-                        if (currItem.countInCart > 1) {
-                            currItem.countInCart -= 1
-                            this.count -= 1
-                            return;
-                        }
-                        if (currItem.countInCart === 1) {
-                            this.curt = this.curt.filter(function (elem) {
-                                return elem.id !== currItem.id
-                            })
-                            this.count -= 1
-                        }
-                    },
-                    isNotInCurt(id) {
-                        const item = this._getCurrentItemInCart(id)
-                        return item === undefined
-                    },
-                    checkDisabling() {
-                        return (this.curt.length === 0) || (this.showAlertMessage === true)
-                    },
-                    getCountTotal() {
-                        return this.count
-                    },
-                    getTotalOrderSum() {
-                        return this.curt.reduce(function (sum, item) {
-                            return sum + item.countInCart * item.price;
-                        }, 0.0) + "грн"
+    </div>
+    <script>
+        function getItems() {
+            return {
+                count: 0,
+                funClubItems: [],
+                curt: [],
+                isLoading: false,
+                messages: false,
+                phone: '',
+                error: false,
+                errors: {
+                    phone: ['Заполните номер (11 цифр минимум)'],
+                },
+                showAlertMessage: true,
+                add(id) {
+                    this.messages = false
+                    this.count += 1
+                    let curtCurrItem = this._getCurrentItemInCart(id)
+                    if (curtCurrItem) {
+                        curtCurrItem.countInCart += 1
+                        return;
                     }
-                    ,
-                    getTotalOrderQuantity() {
-                        return this.curt.reduce(function (quan, item) {
-                            return quan + item.countInCart;
-                        }, 0) + "шт"
+                    let currItem = this._getCurrentItem(id)
+                    let copyCurrItem = Object.assign({}, currItem);
+                    copyCurrItem.countInCart = 1
+                    this.curt.push(copyCurrItem)
+                },
+                sub(id) {
+                    this.messages = false
+                    let currItem = this._getCurrentItemInCart(id)
+                    if (currItem === undefined) {
+                        return;
                     }
-                    ,
-                    getItemSumInCart(id) {
-                        const currItem = this._getCurrentItemInCart(id)
-                        return currItem.price * currItem.countInCart + "грн"
+                    if (currItem.countInCart > 1) {
+                        currItem.countInCart -= 1
+                        this.count -= 1
+                        return;
                     }
-                    ,
-                    getItemPrice(id) {
-                        const currItem = this._getCurrentItem(id)
-                        if (!currItem) {
-                            return "0.0 грн";
-                        }
-                        return currItem.price + "грн"
-                    }
-                    ,
-                    _getCurrentItemInCart(id) {
-                        return this.curt.find(function (item) {
-                            if (item.id === id) {
-                                return true;
-                            }
-                        });
-                    }
-                    ,
-                    _getCurrentItem(id) {
-                        return this.funClubItems.find(function (item) {
-                            if (item.id === id) {
-                                return true;
-                            }
-                        });
-                    }
-                    ,
-                    fetchItems() {
-                        this.isLoading = true;
-                        fetch(`api/fun_club_items/all`)
-                            .then(res => res.json())
-                            .then(data => {
-                                this.isLoading = false;
-
-                                this.funClubItems = data.map(function (item) {
-                                    item.image = '/storage/images/fun_club_items/' + item.image;
-                                    return item;
-                                });
-                            });
-                    },
-                    checkPhone() {
-                        if (this.phone.length < 11) {
-                            this.errors = {
-                                phone: ['Заполните номер (11 цифр минимум)'],
-                            }
-                            this.showAlertMessage = true;
-                        } else {
-                            this.showAlertMessage = false;
-                            this.errors = []
-                        }
-                    },
-                    saveCurt() {
-                        this.isLoading = true;
-                        fetch(`api/fun_club_items/save`, {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify({'curt': this.curt, 'phone': this.phone})
+                    if (currItem.countInCart === 1) {
+                        this.curt = this.curt.filter(function (elem) {
+                            return elem.id !== currItem.id
                         })
-                            .then(res => {
-                                return res.json()
-                            })
-                            .then(data => {
-                                this.error = data.error;
-                                this.isLoading = false;
-                                this.messages = data.messages;
-                                if (this.error === false) {
-                                    this.curt = []
-                                    this.count = 0
-                                }
-                            })
-                            .catch((error) => {
-                                console.log('Error:', error);
-                            });
+                        this.count -= 1
                     }
+                },
+                isNotInCurt(id) {
+                    const item = this._getCurrentItemInCart(id)
+                    return item === undefined
+                },
+                checkDisabling() {
+                    return (this.curt.length === 0) || (this.showAlertMessage === true)
+                },
+                getCountTotal() {
+                    return this.count
+                },
+                getTotalOrderSum() {
+                    return this.curt.reduce(function (sum, item) {
+                        return sum + item.countInCart * item.price;
+                    }, 0.0) + "грн"
+                }
+                ,
+                getTotalOrderQuantity() {
+                    return this.curt.reduce(function (quan, item) {
+                        return quan + item.countInCart;
+                    }, 0) + "шт"
+                }
+                ,
+                getItemSumInCart(id) {
+                    const currItem = this._getCurrentItemInCart(id)
+                    return currItem.price * currItem.countInCart + "грн"
+                }
+                ,
+                getItemPrice(id) {
+                    const currItem = this._getCurrentItem(id)
+                    if (!currItem) {
+                        return "0.0 грн";
+                    }
+                    return currItem.price + "грн"
+                }
+                ,
+                _getCurrentItemInCart(id) {
+                    return this.curt.find(function (item) {
+                        if (item.id === id) {
+                            return true;
+                        }
+                    });
+                }
+                ,
+                _getCurrentItem(id) {
+                    return this.funClubItems.find(function (item) {
+                        if (item.id === id) {
+                            return true;
+                        }
+                    });
+                }
+                ,
+                fetchItems() {
+                    this.isLoading = true;
+                    fetch(`api/fun_club_items/all`)
+                        .then(res => res.json())
+                        .then(data => {
+                            this.isLoading = false;
 
+                            this.funClubItems = data.map(function (item) {
+                                item.image = '/storage/images/fun_club_items/' + item.image;
+                                return item;
+                            });
+                        });
+                },
+                checkPhone() {
+                    if (this.phone.length < 11) {
+                        this.errors = {
+                            phone: ['Заполните номер (11 цифр минимум)'],
+                        }
+                        this.showAlertMessage = true;
+                    } else {
+                        this.showAlertMessage = false;
+                        this.errors = []
+                    }
+                },
+                saveCurt() {
+                    this.isLoading = true;
+                    fetch(`api/fun_club_items/save`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({'curt': this.curt, 'phone': this.phone})
+                    })
+                        .then(res => {
+                            return res.json()
+                        })
+                        .then(data => {
+                            this.error = data.error;
+                            this.isLoading = false;
+                            this.messages = data.messages;
+                            if (this.error === false) {
+                                this.curt = []
+                                this.count = 0
+                            }
+                        })
+                        .catch((error) => {
+                            console.log('Error:', error);
+                        });
                 }
 
             }
-        </script>
 
-    </div>
+        }
+    </script>
 @endsection

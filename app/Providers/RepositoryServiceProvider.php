@@ -5,9 +5,11 @@ namespace App\Providers;
 use App\Repositories\CoachesRepository;
 use App\Repositories\EmployeeRepository;
 use App\Repositories\FunClubRepository;
+use App\Repositories\GalleryRepository;
 use App\Repositories\Interfaces\CoachesRepositoryInterface;
 use App\Repositories\Interfaces\EmployeeRepositoryInterface;
 use App\Repositories\Interfaces\FunClubRepositoryInterface;
+use App\Repositories\Interfaces\GalleryRepositoryInterface;
 use App\Repositories\Interfaces\NewsRepositoryInterface;
 use App\Repositories\Interfaces\OrderRepositoryInterface;
 use App\Repositories\Interfaces\PeriodsRepositoryInterface;
@@ -44,6 +46,8 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(NewsRepositoryInterface::class, NewsRepository::class);
 
         $this->app->bind(TeamRepositoryInterface::class, TeamRepository::class);
+
+        $this->app->bind(GalleryRepositoryInterface::class, GalleryRepository::class);
     }
 
     /**

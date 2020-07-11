@@ -3,6 +3,7 @@
 use App\Http\Controllers\CoachesController;
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\FanClubController;
+use App\Http\Controllers\GalleryController;
 use App\Models\Employees;
 use App\Models\News;
 use Illuminate\Support\Facades\Route;
@@ -61,9 +62,7 @@ Route::group(['prefix' => App\Http\Middleware\LocaleMiddleware::getLocale()], st
 
     Route::get('/events', [EventsController::class,'index'])->name('events');
 
-    Route::get('/gallery', static function () {
-        return view('app.gallery');
-    })->name('gallery');
+    Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery');
 
     Route::get('/coaches', [CoachesController::class, 'index'])->name('coaches');
 
