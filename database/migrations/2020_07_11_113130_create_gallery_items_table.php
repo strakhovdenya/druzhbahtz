@@ -17,6 +17,7 @@ class CreateGalleryItemsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('gallery_head_id');
             $table->string('image', 250)->nullable();
+            $table->string('folder', 250)->nullable();
             $table->softDeletes();
             $table->timestamps();
             $table->foreign('gallery_head_id')->references('id')->on('gallery_heads')->onDelete('cascade');
