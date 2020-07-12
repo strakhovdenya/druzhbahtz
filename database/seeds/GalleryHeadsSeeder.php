@@ -27,10 +27,7 @@ class GalleryHeadsSeeder extends Seeder
             'name'        => 'Кубок Одеси - 2015',
             'description' => 'Кубок Одеси - 2015',
         ]);
-        DB::table('gallery_heads')->insert([
-            'name'        => 'test',
-            'description' => 'test',
-        ]);
+
         DB::table('gallery_heads')->insert([
             'name'        => 'Футбол ХТЗ - 2015',
             'description' => 'Футбол ХТЗ - 2015',

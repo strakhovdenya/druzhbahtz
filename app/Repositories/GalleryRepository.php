@@ -16,13 +16,10 @@ class GalleryRepository implements GalleryRepositoryInterface
     public function getAll()
     {
         try {
-            $galleryHead = GalleryHeads::orderBy('id', 'DESC')->with(['galleryItems'=> static function($query){
-                $query->first();
-            }])->get();
+            $galleryHead = GalleryHeads::orderBy('id', 'DESC')->with('galleryItems')->get();
         } catch (Throwable $e) {
             $galleryHead = collect([]);
         }
-//dd($galleryHead->last()->galleryItems->first());
         return $galleryHead;
     }
 }

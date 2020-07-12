@@ -7,7 +7,7 @@
             @foreach($galleries as $gallery)
                 <div class="col-lg-4 col-md-6 mb-4 mx-auto">
                     <div class="card profilebox">
-                        @if($gallery->galleryItems->count()===1)
+                        @if($gallery->galleryItems->count()!==0)
                             <img class="card-img"
                                  src="/storage/images/galleries/{{$gallery->galleryItems->first()->folder}}/thumb/{{$gallery->galleryItems->first()->image}}"
                                  alt="Card image cap">
