@@ -50,6 +50,12 @@
     min-width: 150px;
 }
 
+.gallery-custom li {
+    background-color: red;
+    opacity: 0.2;
+    transition: opacity 0.6s ease;
+}
+
 //body { background-color: #EEF0F3; }
 //.site-background {
 //    position: absolute;
