@@ -22,7 +22,8 @@
                                href="/storage/images/employees/{{$oneEmployee->image ?? 'empty_foto-min.jpg'}}">
                                 <img width="350px" alt="no foto"
                                      class="img-fluid img-thumbnail"
-                                     src="/storage/images/employees/{{$oneEmployee->image?? 'empty_foto-min.jpg'}}"></a>
+                                     src="/storage/images/employees/{{$oneEmployee->image?? 'empty_foto-min.jpg'}}">
+                            </a>
                         </th>
                         <th class="border-bottom">
                                 Комманда: {{$oneEmployee->team->name}}

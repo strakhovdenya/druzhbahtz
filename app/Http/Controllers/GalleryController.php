@@ -12,14 +12,14 @@ use Illuminate\View\View;
 class GalleryController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * @param GalleryRepositoryInterface $galleryRepository
      *
      * @return Application|Factory|View
      */
     public function index(GalleryRepositoryInterface $galleryRepository)
     {
         $galleries = $galleryRepository->getAll();
-        return view('app.gallery',compact('galleries'));
+        return view('app.galleries',compact('galleries'));
     }
 
     /**
@@ -45,14 +45,16 @@ class GalleryController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * @param                            $id
+     * @param GalleryRepositoryInterface $galleryRepository
      *
-     * @param  int  $id
-     * @return Response
+     * @return Application|Factory|View
      */
-    public function show($id)
+    public function show($id, GalleryRepositoryInterface $galleryRepository)
     {
-        //
+        $galleryHead = $galleryRepository->show($id);
+
+        return view('app.galleryOne',compact('galleryHead'));
     }
 
     /**

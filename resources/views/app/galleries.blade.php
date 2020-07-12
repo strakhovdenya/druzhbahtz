@@ -16,7 +16,7 @@
                                  alt="Card image cap">
                         @endif
                         <div class="card-img-overlay d-flex align-items-end justify-content-center profileInfo">
-                            <a href="#" class="btn btn-primary">{{$gallery->name}}</a>
+                            <a href="{{route('gallery_one',['id'=>$gallery->id])}}" class="btn btn-primary">{{$gallery->name}}</a>
                         </div>
                     </div>
                 </div>

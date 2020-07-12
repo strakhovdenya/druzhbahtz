@@ -4,6 +4,8 @@ use App\Http\Controllers\CoachesController;
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\FanClubController;
 use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\TeamPlayersController;
+use App\Http\Controllers\TrainingScheduleController;
 use App\Models\Employees;
 use App\Models\News;
 use Illuminate\Support\Facades\Route;
@@ -19,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['prefix' => App\Http\Middleware\LocaleMiddleware::getLocale()], static function() {
+Route::group(['prefix' => App\Http\Middleware\LocaleMiddleware::getLocale()], static function () {
 
     Route::get('/', function () {
         return view('app.start');
@@ -33,14 +35,14 @@ Route::group(['prefix' => App\Http\Middleware\LocaleMiddleware::getLocale()], st
         return view('app.setTo');
     })->name('setTo');
 
-    Route::get('/schedule{type}', 'TrainingScheduleController@index')->name('schedule');
+    Route::get('/schedule{type}', [TrainingScheduleController::class, 'index'])->name('schedule');
 
     Route::get('/trainingPlaces', function () {
         return view('app.trainingPlaces');
     })->name('trainingPlaces');
 
-    Route::get('/team_players', 'TeamPlayersController@index')->name('team');
-    Route::get('/team_players/{id}', 'TeamPlayersController@show')->name('team_one');
+    Route::get('/team_players', [TeamPlayersController::class, 'index'])->name('team');
+    Route::get('/team_players/{id}', [TeamPlayersController::class, 'show'])->name('team_one');
 
     Route::get('/employees/{id?}', function ($id = null) {
         if ($id !== null) {
@@ -60,9 +62,10 @@ Route::group(['prefix' => App\Http\Middleware\LocaleMiddleware::getLocale()], st
         return view('app.clubCup', ['id' => $id]);
     })->name('clubCup');
 
-    Route::get('/events', [EventsController::class,'index'])->name('events');
+    Route::get('/events', [EventsController::class, 'index'])->name('events');
 
     Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery');
+    Route::get('/gallery/{id}', [GalleryController::class, 'show'])->name('gallery_one');
 
     Route::get('/coaches', [CoachesController::class, 'index'])->name('coaches');
 
@@ -70,7 +73,7 @@ Route::group(['prefix' => App\Http\Middleware\LocaleMiddleware::getLocale()], st
 
     Route::get('setlocale/{lang}', static function ($lang) {
 
-        $referer = Redirect::back()->getTargetUrl(); //URL предыдущей страницы
+        $referer   = Redirect::back()->getTargetUrl(); //URL предыдущей страницы
         $parse_url = parse_url($referer, PHP_URL_PATH); //URI предыдущей страницы
 
         //разбиваем на массив по разделителю
@@ -82,17 +85,18 @@ Route::group(['prefix' => App\Http\Middleware\LocaleMiddleware::getLocale()], st
         }
 
         //Добавляем метку языка в URL (если выбран не язык по-умолчанию)
-        if ($lang !== App\Http\Middleware\LocaleMiddleware::$mainLanguage){
+        if ($lang !== App\Http\Middleware\LocaleMiddleware::$mainLanguage) {
             array_splice($segments, 1, 0, $lang);
         }
 
         //формируем полный URL
-        $url = Request::root().implode("/", $segments);
+        $url = Request::root() . implode("/", $segments);
 
         //если были еще GET-параметры - добавляем их
-        if(parse_url($referer, PHP_URL_QUERY)){
+        if (parse_url($referer, PHP_URL_QUERY)) {
             $url .= '?' . parse_url($referer, PHP_URL_QUERY);
         }
+
         return redirect($url); //Перенаправляем назад на ту же страницу
 
     })->name('setlocale');
