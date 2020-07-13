@@ -3,22 +3,23 @@
     height: 50px;
 }
 
-.number-in-team{
+.number-in-team {
     right: 1%;
 }
 
 .bg-custom-red {
     background-color: #fb1303 !important;
 }
-.bg-custom-blue{
+
+.bg-custom-blue {
     background-color: #2472de !important;
 }
 
-.bg-custom-light-blue{
+.bg-custom-light-blue {
     background-color: rgb(195, 211, 238) !important;
 }
 
-.bg-custom-yellow{
+.bg-custom-yellow {
     background-color: #ffff00 !important;
 }
 
@@ -26,7 +27,7 @@
     border-color: #fb1303 !important;
 }
 
-.border-custom-blue{
+.border-custom-blue {
     border-color: #2472de !important;
 }
 
@@ -34,19 +35,19 @@
     border-color: #ffff00 !important;
 }
 
-.event-search-competitor{
+.event-search-competitor {
     cursor: pointer;
-    border: solid rgba(0,255,255,0);
+    border: solid rgba(0, 255, 255, 0);
 }
 
-.event-search-competitor:hover{
+.event-search-competitor:hover {
     border: solid aqua;
     border-radius: 8px;
     opacity: 0.5;
     transition-delay: 0.2s;
 }
 
-.search-competitor-button{
+.search-competitor-button {
     min-width: 150px;
 }
 
@@ -56,17 +57,38 @@
     transition: opacity 0.6s ease;
 }
 
-//body { background-color: #EEF0F3; }
-//.site-background {
-//    position: absolute;
-//    top: 0;
-//    right: 0;
-//    bottom: 0;
-//    left: 0;
-//    z-index: -1;
-//    background-color: #EEF0F3;
-//    background-position: center top;
-//    background-attachment: scroll;
-//    background-repeat: no-repeat;
-//    background-image: url(https://cdn3.sportngin.com/attachments/background_graphic/6954/4126/hockey2.jpg);
-//}
+.carousel-control-prev-custom {
+    background: rgb(85,85,85);
+    background: linear-gradient(90deg, rgba(85,85,85,1) 0%, rgba(164,164,164,1) 35%, rgba(249,252,252,1) 100%);
+    opacity: 0;
+}
+
+.carousel-control-prev-custom:hover {
+    background: rgb(85,85,85);
+    background: linear-gradient(90deg, rgba(85,85,85,1) 0%, rgba(164,164,164,1) 35%, rgba(249,252,252,1) 100%);
+    opacity: 0.4;
+}
+
+.carousel-control-prev-custom:focus {
+    background: rgb(85,85,85);
+    background: linear-gradient(90deg, rgba(85,85,85,1) 0%, rgba(164,164,164,1) 35%, rgba(249,252,252,1) 100%);
+    opacity: 0.4;
+}
+
+.carousel-control-next-custom {
+    background: rgb(85,85,85);
+    background: linear-gradient(270deg, rgba(85,85,85,1) 0%, rgba(164,164,164,1) 35%, rgba(249,252,252,1) 100%);
+    opacity: 0;
+}
+
+.carousel-control-next-custom:hover {
+    background: rgb(85,85,85);
+    background: linear-gradient(270deg, rgba(85,85,85,1) 0%, rgba(164,164,164,1) 35%, rgba(249,252,252,1) 100%);
+    opacity: 0.4;
+}
+
+.carousel-control-next-custom:focus {
+    background: rgb(85,85,85);
+    background: linear-gradient(270deg, rgba(85,85,85,1) 0%, rgba(164,164,164,1) 35%, rgba(249,252,252,1) 100%);
+    opacity: 0.4;
+}

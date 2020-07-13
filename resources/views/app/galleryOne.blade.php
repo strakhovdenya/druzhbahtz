@@ -41,11 +41,11 @@
                                 </div>
                             @endforeach
                         </div>
-                        <a class="carousel-control-prev" href="#lightbox" role="button" data-slide="prev">
+                        <a class="carousel-control-prev carousel-control-prev-custom" href="#lightbox" role="button" data-slide="prev">
                             <span><i class="fa fa-angle-left fa-3x" aria-hidden="true" style="color:red;"></i></span>
                             <span class="sr-only">Previous</span>
                         </a>
-                        <a class="carousel-control-next" href="#lightbox" role="button" data-slide="next">
+                        <a class="carousel-control-next carousel-control-next-custom" href="#lightbox" role="button" data-slide="next">
                             <span><i class="fa fa-angle-right fa-3x" aria-hidden="true" style="color:red;"></i></span>
                             <span class="sr-only">Next</span>
                         </a>
