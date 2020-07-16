@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Orders;
+use App\Http\Responses\FunClubSaveAllResponse;
 use App\Repositories\Interfaces\FunClubRepositoryInterface;
 use App\Repositories\Interfaces\OrderRepositoryInterface;
 use Illuminate\Contracts\Foundation\Application;
@@ -33,28 +33,12 @@ class FanClubController extends Controller
     }
 
     /**
-     * @param Request                  $request
      * @param OrderRepositoryInterface $orderRepository
      *
-     * @return JsonResponse
+     * @return FunClubSaveAllResponse
      */
-    public function saveAll(Request $request, OrderRepositoryInterface $orderRepository)
+    public function saveAll(OrderRepositoryInterface $orderRepository)
     {
-        $curt    = $request->only(['curt']);
-        $hash    = $request->ip() . '|' . $request->server('HTTP_USER_AGENT');
-        $phone   = $request->only(['phone']);
-        $phone['unique_hash'] = $hash;
-
-        $diffSec = $orderRepository->getDiffSecondForLastUniqueOrder($hash);
-        if ($diffSec < 60) {
-            return response()->json(['messages' => 'Сохранять заказы можно не чаще одного раза в минуту', 'error' => true], 400);
-        }
-
-        /** @var Orders $order */
-        $order        = Orders::create($phone);
-        $curtToCreate = $orderRepository->formCurtToCreate($curt);
-        $order->orderItems()->createMany($curtToCreate);
-
-        return response()->json(['messages' => 'Успешно сохранено','error' => false], 200);
+        return new FunClubSaveAllResponse($orderRepository);
     }
 }
