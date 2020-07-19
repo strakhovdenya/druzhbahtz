@@ -54,7 +54,7 @@
                         <input id="phone" x-model="phone" x-on:keydown="$nextTick(() => { checkPhone() });"
                                x-bind:class="{ 'border border-danger': errors['phone'] }"
                                class="col-5"
-                               type="text" placeholder="xxx-xxx-xxx-xx">
+                               type="text" placeholder="(000) 000 0000">
                         <span
                             x-show="errors['phone']"
                             class="col-2 text-center">
@@ -86,3 +86,8 @@
         </div>
     </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+<script>
+    $('#phone').mask('(000) 000 0000');
+</script>

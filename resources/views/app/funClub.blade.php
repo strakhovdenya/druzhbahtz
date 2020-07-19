@@ -182,7 +182,7 @@
                         });
                 },
                 checkPhone() {
-                    if (this.phone.length < 11) {
+                    if (this.phone.length < 14) {
                         this.errors = {
                             phone: ['Заполните номер (11 цифр минимум)'],
                         }
