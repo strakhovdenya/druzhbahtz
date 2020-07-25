@@ -8,6 +8,7 @@ use App\Http\Controllers\TeamPlayersController;
 use App\Http\Controllers\TrainingScheduleController;
 use App\Models\Employees;
 use App\Models\News;
+use App\Repositories\Interfaces\EmployeeRepositoryInterface;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,14 +45,9 @@ Route::group(['prefix' => App\Http\Middleware\LocaleMiddleware::getLocale()], st
     Route::get('/team_players', [TeamPlayersController::class, 'index'])->name('team');
     Route::get('/team_players/{id}', [TeamPlayersController::class, 'show'])->name('team_one');
 
-    Route::get('/employees/{id?}', function ($id = null) {
-        if ($id !== null) {
-            $oneEmployee = Employees::find($id);
-        } else {
-            $oneEmployee = null;
-        }
-
-        return view('app.employeeInfo', ['oneEmployee' => $oneEmployee]);
+    Route::get('/employees/{id?}', function ($id = null, EmployeeRepositoryInterface $employeeRepository) {
+        $oneEmployee = $employeeRepository->showOne($id);
+        return view('app.employeeInfo', compact('oneEmployee'));
     })->name('employees');
 
     Route::get('/tournaments/{id?}', function ($id = null) {

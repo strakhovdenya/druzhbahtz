@@ -26,7 +26,7 @@
                             </a>
                         </th>
                         <th class="border-bottom">
-                                Комманда: {{$oneEmployee->team->name}}
+                            Комманда: {{$oneEmployee->team->name}}
 
                         </th>
                     </tr>
@@ -64,17 +64,48 @@
                         <td class="border-bottom">Вес: <strong>{{$oneEmployee->weight??'30'}}</strong></td>
                     </tr>
                     <tr>
-                        <td class="">Любимая команда: <strong>{{$oneEmployee->fav_team??'омманда №1'}}</strong></td>
+                        <td class="">Любимая команда: <strong>{{$oneEmployee->fav_team??'Комманда №1'}}</strong></td>
                     </tr>
                     </tbody>
                 </table>
             </div>
         </div>
         <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-            <div class="container container-fluid mt-1 pr-0 pl-0">
-                {!! $oneEmployee->additional_info??'<h3>нет инфо</h3>' !!}
+            {{--            <div class="container container-fluid mt-1 pr-0 pl-0">--}}
+            <table class="table table-borderless">
+                <tbody>
+                <tr class="m-0">
+                    <td class="w-50 border-bottom ">УЛЮБЛЕНЕ ЗАНЯТТЯ</td>
+                    <td class="w-50 border-bottom ">{{$oneEmployee->employeeDatas->favorite_activity?? '-'}}</td>
+                </tr>
+                <tr>
+                    <td class="border-bottom ">УЛЮБЛЕНИЙ МУЛЬТФІЛЬМ</td>
+                    <td class="border-bottom ">{{$oneEmployee->employeeDatas->favorite_cartoon?? '-'}}</td>
+                </tr>
+                <tr>
+                    <td class="border-bottom ">УЛЮБЛЕНА КНИГА</td>
+                    <td class="border-bottom ">{{$oneEmployee->employeeDatas->favorite_book?? '-'}}</td>
+                </tr>
+                <tr>
+                    <td class="border-bottom ">УЛЮБЛЕНИЙ КОЛІР</td>
+                    <td class="border-bottom ">{{$oneEmployee->employeeDatas->favorite_color?? '-'}}</td>
+                </tr>
+                <tr>
+                    <td class="border-bottom ">ЩО БІЛЬШЕ ЗА ВСЕ ПОДОБАЄТЬСЯ У ХОКЕЇ?</td>
+                    <td class="border-bottom ">{{$oneEmployee->employeeDatas->most_in_hockey?? '-'}}</td>
+                </tr>
+                <tr>
+                    <td class="border-bottom ">КИМ ХОЧЕШ СТАТИ У МАЙБУТНЬОМУ?</td>
+                    <td class="border-bottom ">{{$oneEmployee->employeeDatas->about_future?? '-'}}</td>
+                </tr>
+                <tr>
+                    <td class="border-bottom ">МРІЯ</td>
+                    <td class="border-bottom ">{{$oneEmployee->employeeDatas->dream?? '-'}}</td>
+                </tr>
+                </tbody>
+            </table>
 
-            </div>
+            {{--            </div>--}}
         </div>
     </div>
 

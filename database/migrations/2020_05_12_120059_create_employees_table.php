@@ -13,7 +13,7 @@ class CreateEmployeesTable extends Migration
      */
     public function up()
     {
-        Schema::create('employees', function (Blueprint $table) {
+        Schema::create('employees', static function (Blueprint $table) {
             $table->id();
             $table->string('name',100);
             $table->string('position',100);
@@ -27,7 +27,6 @@ class CreateEmployeesTable extends Migration
             $table->smallInteger('weight');
             $table->string('image',250)->nullable();
             $table->string('fav_team',150);
-            $table->text('additional_info');
             $table->unsignedBigInteger('team_id');
             $table->softDeletes();
             $table->timestamps();

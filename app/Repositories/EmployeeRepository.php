@@ -7,6 +7,7 @@ use App\Repositories\Interfaces\EmployeeRepositoryInterface;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use Throwable;
 use function in_array;
@@ -52,6 +53,27 @@ class EmployeeRepository implements EmployeeRepositoryInterface
     }
 
     /**
+     * @param $id
+     *
+     * @return Employees|Builder|Builder[]|EloquentCollection|Model|null
+     */
+    public function showOne($id)
+    {
+        try {
+            if ($id !== null) {
+                $oneEmployee = Employees::with('employeeDatas')->find($id);
+            } else {
+                $oneEmployee = new Employees();
+            }
+
+        } catch (Throwable $e) {
+            $oneEmployee = new Employees();
+        }
+
+        return $oneEmployee;
+    }
+
+    /**
      * @return Builder[]|EloquentCollection|Collection
      */
     public function getBornTodayCollection()
@@ -63,7 +85,7 @@ class EmployeeRepository implements EmployeeRepositoryInterface
         }
     }
 
-    public function getBornSoonCollection()
+    public function getBornSoonCollection():?Collection
     {
         try {
             $borns =

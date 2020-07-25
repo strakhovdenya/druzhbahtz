@@ -44,50 +44,11 @@ class EmployeesSeeder extends Seeder
             'employees109_date02_02_2018_11_32_32635098_737691.jpg',
         ];
 
-        $additional_info = '<p align="center"> </p>
-<p align="center"><font color="#000000"><span style="font-size: 15px;"><strong>ОСОБИСТІ ДАНІ:</strong></span></font></p>
-<p align="center"> </p>
-<table class="table_description_person">
-<tbody>
-<tr>
-<td>УЛЮБЛЕНЕ ЗАНЯТТЯ</td>
-<td>хокей, конструктор</td>
-</tr>
-<tr>
-<td>УЛЮБЛЕНИЙ МУЛЬТФІЛЬМ</td>
-<td>усі</td>
-</tr>
-<tr>
-<td>УЛЮБЛЕНА КНИГА</td>
-<td> </td>
-</tr>
-<tr>
-<td>УЛЮБЛЕНИЙ ФРУКТ</td>
-<td>банан</td>
-</tr>
-<tr>
-<td>УЛЮБЛЕНИЙ КОЛІР</td>
-<td>синій</td>
-</tr>
-<tr>
-<td>ЩО БІЛЬШЕ ЗА ВСЕ ПОДОБАЄТЬСЯ У ХОКЕЇ?</td>
-<td>закидати шайбу у ворота</td>
-</tr>
-<tr>
-<td>КИМ ХОЧЕШ СТАТИ У МАЙБУТНЬОМУ?</td>
-<td>хокеїстом</td>
-</tr>
-<tr>
-<td>МРІЯ</td>
-<td>стати відомим хокеїстом</td>
-</tr>
-</tbody>
-</table>';
+
         $teamIds = Teams::pluck('id')->toArray();
-        $employees       = factory(Employees::class, 80)->make()->each(function ($employee) use ($position, $hand, $additional_info, $images, $teamIds) {
+        $employees       = factory(Employees::class, 80)->make()->each(function ($employee) use ($position, $hand, $images, $teamIds) {
             $employee->hand            = $hand[array_rand($hand)];
             $employee->position        = $position[array_rand($position)];
-            $employee->additional_info = $additional_info;
             $employee->image = $images[array_rand($images)];
             $employee->team_id = $teamIds[array_rand($teamIds)];
         })->toArray();

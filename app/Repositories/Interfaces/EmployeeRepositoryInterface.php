@@ -13,4 +13,6 @@ interface EmployeeRepositoryInterface
     public function getBornTodayCollection();
 
     public function getBornSoonCollection();
+
+    public function showOne($id);
 }
