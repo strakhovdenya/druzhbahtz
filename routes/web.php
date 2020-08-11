@@ -4,6 +4,7 @@ use App\Http\Controllers\CoachesController;
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\FanClubController;
 use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\TeamPlayersController;
 use App\Http\Controllers\TrainingScheduleController;
 use App\Models\Employees;
@@ -59,6 +60,7 @@ Route::group(['prefix' => App\Http\Middleware\LocaleMiddleware::getLocale()], st
     })->name('clubCup');
 
     Route::get('/events', [EventsController::class, 'index'])->name('events');
+    Route::get('/news', [NewsController::class, 'index'])->name('news');
 
     Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery');
     Route::get('/gallery/{id}', [GalleryController::class, 'show'])->name('gallery_one');

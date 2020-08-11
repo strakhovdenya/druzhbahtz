@@ -60,7 +60,7 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-nav bg-custom-red nav-shadow">
                         <a class="dropdown-item-nav text-white"
-                           href="{{route('tournaments')}}">@lang('navigation.events_type.news')</a>
+                           href="{{route('news')}}">@lang('navigation.events_type.news')</a>
                         <a class="dropdown-item-nav text-white"
                            href="{{route('events')}}">@lang('navigation.events_type.events')</a>
                     </div>

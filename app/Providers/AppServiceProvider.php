@@ -6,12 +6,8 @@ use App\Http\ViewComposers\BirthdayComposer;
 use App\Http\ViewComposers\CalendarComposer;
 use App\Http\ViewComposers\NewsComposer;
 use App\Http\ViewComposers\TeamComposer;
-use App\Models\Employees;
-use App\Models\News;
-use Carbon\Carbon;
-use Illuminate\Support\Collection;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
-use Throwable;
 
 class AppServiceProvider extends ServiceProvider
 {
