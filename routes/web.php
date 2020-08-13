@@ -102,3 +102,7 @@ Route::group(['prefix' => App\Http\Middleware\LocaleMiddleware::getLocale()], st
 
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

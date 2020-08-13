@@ -1,6 +1,7 @@
 <div class="row ">
 
-    <nav class="container-fluid position-relative navbar navbar-expand-lg navbar-dark bg-custom-blue mt-5 mb-5 menu shadow">
+    <nav
+        class="container-fluid position-relative navbar navbar-expand-lg navbar-dark bg-custom-blue mt-5 mb-5 menu shadow">
         <img class="position-absolute" src="/image/logo-color.png" alt="main-logo" width="100px">
         <div class="container justify-content-center">
 
@@ -73,20 +74,22 @@
                 </li>
             </ul>
         </div>
-        <ul class="navbar-nav menu__list">
-            <li class="nav-item dropdown">
-                <a class="nav-link menu__link_group menu__link" href="#" id="navbardrop" data-toggle="dropdown">
-                    @lang('navigation.language')
-                </a>
-                <div class="dropdown-menu dropdown-menu-nav bg-custom-red nav-shadow">
-                    <a class="dropdown-item-nav text-white "
-                       href="{{route('setlocale', ['lang' => 'uk'])}}">@lang('navigation.language_type.uk')</a>
-                    <a class="dropdown-item-nav text-white"
-                       href="{{route('setlocale', ['lang' => 'en'])}}">@lang('navigation.language_type.en')</a>
-                    <a class="dropdown-item-nav text-white"
-                       href="{{route('setlocale', ['lang' => 'ru'])}}">@lang('navigation.language_type.ru')</a>
-                </div>
-            </li>
-        </ul>
+        @if(Auth::check())
+            <ul class="navbar-nav menu__list">
+                <li class="nav-item dropdown">
+                    <a class="nav-link menu__link_group menu__link" href="#" id="navbardrop" data-toggle="dropdown">
+                        @lang('navigation.language')
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-nav bg-custom-red nav-shadow">
+                        <a class="dropdown-item-nav text-white "
+                           href="{{route('setlocale', ['lang' => 'uk'])}}">@lang('navigation.language_type.uk')</a>
+                        <a class="dropdown-item-nav text-white"
+                           href="{{route('setlocale', ['lang' => 'en'])}}">@lang('navigation.language_type.en')</a>
+                        <a class="dropdown-item-nav text-white"
+                           href="{{route('setlocale', ['lang' => 'ru'])}}">@lang('navigation.language_type.ru')</a>
+                    </div>
+                </li>
+            </ul>
+        @endif
     </nav>
 </div>
