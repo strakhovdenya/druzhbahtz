@@ -48,6 +48,7 @@ Route::group(['prefix' => App\Http\Middleware\LocaleMiddleware::getLocale()], st
 
     Route::get('/employees/{id?}', function ($id = null, EmployeeRepositoryInterface $employeeRepository) {
         $oneEmployee = $employeeRepository->showOne($id);
+
         return view('app.employeeInfo', compact('oneEmployee'));
     })->name('employees');
 
@@ -88,11 +89,11 @@ Route::group(['prefix' => App\Http\Middleware\LocaleMiddleware::getLocale()], st
         }
 
         //формируем полный URL
-        $url = Request::root() . implode("/", $segments);
+        $url = Request::root().implode("/", $segments);
 
         //если были еще GET-параметры - добавляем их
         if (parse_url($referer, PHP_URL_QUERY)) {
-            $url .= '?' . parse_url($referer, PHP_URL_QUERY);
+            $url .= '?'.parse_url($referer, PHP_URL_QUERY);
         }
 
         return redirect($url); //Перенаправляем назад на ту же страницу
@@ -101,8 +102,8 @@ Route::group(['prefix' => App\Http\Middleware\LocaleMiddleware::getLocale()], st
 });
 
 
-
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['prefix' => 'admin','middleware' => ['auth']], static function () {
+    Route::get('/main', 'AdminController@index')->name('adminMain');
+});
