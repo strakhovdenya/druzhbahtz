@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Repositories\Admin\AdminRepository;
+use App\Repositories\Admin\Interfaces\AdminRepositoryInterface;
 use App\Repositories\CoachesRepository;
 use App\Repositories\EmployeeRepository;
 use App\Repositories\FunClubRepository;
@@ -48,6 +50,8 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(TeamRepositoryInterface::class, TeamRepository::class);
 
         $this->app->bind(GalleryRepositoryInterface::class, GalleryRepository::class);
+
+        $this->app->bind(AdminRepositoryInterface::class, AdminRepository::class);
     }
 
     /**

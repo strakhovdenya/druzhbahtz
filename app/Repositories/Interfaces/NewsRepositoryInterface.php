@@ -7,4 +7,6 @@ interface NewsRepositoryInterface
     public function getNews($count);
 
     public function getAll();
+
+    public function getAllCount(): ?int;
 }

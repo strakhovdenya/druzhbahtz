@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\FanClubController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -23,6 +24,8 @@ Route::get('/fun_club_items/all', [FanClubController::class, 'getAll']);
 
 Route::post('/fun_club_items/save', [FanClubController::class, 'saveAll']);
 
+
+Route::get('/admin/main/all', [AdminController::class, 'getAll']);
 
 
 

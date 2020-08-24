@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 use Throwable;
 use function in_array;
 
@@ -29,6 +30,21 @@ class EmployeeRepository implements EmployeeRepositoryInterface
         }
 
         return $team;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getAllCount(): ?int
+    {
+        try {
+            $count = Employees::count();
+
+        } catch (Throwable $e) {
+            $count = null;
+        }
+
+        return $count;
     }
 
     /**
@@ -79,17 +95,36 @@ class EmployeeRepository implements EmployeeRepositoryInterface
     public function getBornTodayCollection()
     {
         try {
-            return Employees::where('born', 'like', '%-' . now()->format('m-d') . '%')->get();
+            return Employees::where('born', 'like', '%-'.now()->format('m-d').'%')->get();
         } catch (Throwable $e) {
             return collect([]);
         }
     }
 
-    public function getBornSoonCollection():?Collection
+    /**
+     * @return Collection|null
+     */
+    public function getTeamWithCountPlayers(): ?Collection
+    {
+        try {
+            $countByTeamId = DB::table('employees')
+                ->select('team_id', DB::raw('COUNT(id) as count_employee'))
+                ->groupBy('team_id');
+
+            return DB::table('teams')->joinSub($countByTeamId, 'employees_in_team', function ($join) {
+                $join->on('teams.id', '=', 'employees_in_team.team_id');
+            })->get();
+
+        } catch (Throwable $e) {
+            return collect([]);
+        }
+    }
+
+    public function getBornSoonCollection(): ?Collection
     {
         try {
             $borns =
-                Employees::where('born', 'like', '%-' . now()->format('m') . '-%')->orWhere('born', 'like', '%-' . now()->addMonths(1)->format('m') . '-%')->get();
+                Employees::where('born', 'like', '%-'.now()->format('m').'-%')->orWhere('born', 'like', '%-'.now()->addMonths(1)->format('m').'-%')->get();
 
             $matchDateMonthFrom = now()->addDays(1)->format('m-d');
             $matchDateMonthTo   = now()->addDays(7)->format('m-d');
@@ -108,7 +143,7 @@ class EmployeeRepository implements EmployeeRepositoryInterface
     }
 
     /**
-     * @param EloquentCollection $teamBase
+     * @param  EloquentCollection  $teamBase
      *
      * @return Collection
      */

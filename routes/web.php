@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\CoachesController;
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\FanClubController;
@@ -105,5 +106,5 @@ Route::group(['prefix' => App\Http\Middleware\LocaleMiddleware::getLocale()], st
 Auth::routes();
 
 Route::group(['prefix' => 'admin','middleware' => ['auth']], static function () {
-    Route::get('/main', 'AdminController@index')->name('adminMain');
+    Route::get('/main', [AdminController::class, 'index'])->name('adminMain');
 });

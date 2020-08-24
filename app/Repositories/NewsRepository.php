@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Models\Employees;
 use App\Models\News;
 use App\Repositories\Interfaces\NewsRepositoryInterface;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -38,5 +39,20 @@ class NewsRepository implements NewsRepositoryInterface
         }
 
         return $news;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getAllCount(): ?int
+    {
+        try {
+            $count = Employees::count();
+
+        } catch (Throwable $e) {
+            $count = null;
+        }
+
+        return $count;
     }
 }

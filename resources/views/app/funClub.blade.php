@@ -170,8 +170,8 @@
                 ,
                 fetchItems() {
                     this.isLoading = true;
-                    fetch(`api/fun_club_items/all`)
-                        .then(res => res.json())
+                   fetch(`api/fun_club_items/all`)
+                         .then(res => res.json())
                         .then(data => {
                             this.isLoading = false;
 

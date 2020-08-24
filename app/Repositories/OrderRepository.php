@@ -4,7 +4,9 @@
 namespace App\Repositories;
 
 
+use App\Models\Employees;
 use App\Models\FunClubItems;
+use App\Models\Order_items;
 use App\Models\Orders;
 use App\Repositories\Interfaces\OrderRepositoryInterface;
 use Carbon\Carbon;
@@ -50,5 +52,35 @@ class OrderRepository implements OrderRepositoryInterface
         }
 
         return $curtToCreate;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getOrdersCount(): ?int
+    {
+        try {
+            $count = Orders::count();
+
+        } catch (Throwable $e) {
+            $count = null;
+        }
+
+        return $count;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getOrdersItemsCount(): ?int
+    {
+        try {
+            $count = Order_items::pluck('count')->sum();
+
+        } catch (Throwable $e) {
+            $count = null;
+        }
+
+        return $count;
     }
 }
