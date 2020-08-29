@@ -10,20 +10,21 @@ use Illuminate\Notifications\DatabaseNotification;
 use Illuminate\Notifications\DatabaseNotificationCollection;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Carbon;
+use Laravel\Passport\HasApiTokens;
 
 /**
  * App\Models\User
  *
- * @property int                                                        $id
- * @property string                                                     $name
- * @property string                                                     $email
- * @property Carbon|null                                                $email_verified_at
- * @property string                                                     $password
- * @property string|null                                                $remember_token
- * @property Carbon|null                                                $created_at
- * @property Carbon|null                                                $updated_at
+ * @property int $id
+ * @property string $name
+ * @property string $email
+ * @property Carbon|null $email_verified_at
+ * @property string $password
+ * @property string|null $remember_token
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
  * @property-read DatabaseNotificationCollection|DatabaseNotification[] $notifications
- * @property-read int|null                                              $notifications_count
+ * @property-read int|null $notifications_count
  * @method static Builder|User newModelQuery()
  * @method static Builder|User newQuery()
  * @method static Builder|User query()
@@ -40,6 +41,7 @@ use Illuminate\Support\Carbon;
 class User extends Authenticatable
 {
     use Notifiable;
+    use HasApiTokens;
 
     /**
      * The attributes that are mass assignable.

@@ -25,7 +25,7 @@ Route::get('/fun_club_items/all', [FanClubController::class, 'getAll']);
 Route::post('/fun_club_items/save', [FanClubController::class, 'saveAll']);
 
 
-Route::get('/admin/main/all', [AdminController::class, 'getAll']);
+Route::get('/admin/main/all', [AdminController::class, 'getAll'])->middleware('auth:api');
 
 
 
