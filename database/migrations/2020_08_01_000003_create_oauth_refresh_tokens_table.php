@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOauthRefreshTokensTable extends Migration
+class CreateOauthRefreshTokensTable1 extends Migration
 {
     /**
      * The database schema.
