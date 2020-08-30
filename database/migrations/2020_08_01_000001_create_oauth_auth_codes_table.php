@@ -18,10 +18,10 @@ class CreateOauthAuthCodesTable extends Migration
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->schema = Schema::connection($this->getConnection());
-    }
+//    public function __construct()
+//    {
+//        $this->schema = Schema::connection($this->getConnection());
+//    }
 
     /**
      * Run the migrations.
@@ -55,8 +55,8 @@ class CreateOauthAuthCodesTable extends Migration
      *
      * @return string|null
      */
-    public function getConnection()
-    {
-        return config('passport.storage.database.connection');
-    }
+//    public function getConnection()
+//    {
+//        return config('passport.storage.database.connection');
+//    }
 }
