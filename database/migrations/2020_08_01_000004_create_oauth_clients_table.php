@@ -23,6 +23,7 @@ class CreateOauthClientsTable extends Migration
         $this->schema = Schema::connection($this->getConnection());
     }
 
+
     /**
      * Get the migration connection name.
      *
@@ -30,7 +31,7 @@ class CreateOauthClientsTable extends Migration
      */
     public function getConnection()
     {
-        return config('passport.storage.database.connection');
+        return config('database.connection');
     }
 
     /**
